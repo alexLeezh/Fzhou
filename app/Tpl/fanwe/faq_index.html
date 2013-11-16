@@ -1,0 +1,47 @@
+{include file="inc/header.html"} 
+<?php
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/faq.css";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/faq.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/faq.js";
+?>
+<link rel="stylesheet" type="text/css" href="{function name="parse_css" v="$dpagecss"}" />
+<script type="text/javascript" src="{function name="parse_script" v="$dpagejs" c="$dcpagejs"}"></script>
+
+<div class="blank"></div>
+<div class="">
+	<div class="wrap white_box"">
+		<div class="page_title">
+			常见问题
+		</div>
+		<div class="switch_nav" style="height:1px;"></div>
+		
+		<div class="faq_box">
+			<div class="faq_menus">
+				{foreach from=$faq_list item=faq_res key=key}
+					<div class="faq_title">{$key}</div>
+					{foreach from=$faq_res item=faq}
+					<div class="faq_question1" id="menu_{$faq.id}" rel="{$faq.id}"><a href="#_{$faq.id}"> - {$faq.question}</a></div>
+					{/foreach}
+				{/foreach}
+				<div class="faq_icon"></div>
+			</div>
+			<div class="faq_questions">
+				{foreach from=$faq_list item=faq_res key=key}
+					{foreach from=$faq_res item=faq}
+					<div class="faq_question" id="question_{$faq.id}" rel="{$faq.id}"><a name="_{$faq.id}"> - {$faq.question}</a></div>
+					<div class="faq_answer" id="answer_{$faq.id}">{function name="nl2br" v=$faq.answer}</div>
+					<div class="blank"></div>
+					{/foreach}
+				{/foreach}
+			</div>
+			
+		</div>
+		
+		<div class="blank"></div>
+		<!-- <p class="faq-uptalk">没有找到满意的答案？那就向方舟网<a href="#">在线提问</a>吧！</p> -->
+		<div class="blank"></div>
+		
+	</div>
+</div>
+<div class="blank"></div>
+{include file="inc/footer.html"} 

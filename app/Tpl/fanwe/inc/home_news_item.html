@@ -1,0 +1,27 @@
+{foreach from=$log_list item=log_item}
+<div class="deal_update"  id="post_{$log_item.id}">
+	<div class="news_deal_info">
+		<a href="{url r="deal#show" p="id=$log_item.deal_info.id"}" target="_blank" title="{$log_item.deal_info.name}"><img src="{function name="get_spec_image" v=$log_item.deal_info.image w=250 h=210 g=1}" /></a>
+		<div class="blank"></div>
+		<a href="{url r="deal#show" p="id=$log_item.deal_info.id"}" target="_blank" title="{$log_item.deal_info.name}" class="linkgreen">
+			{function name="msubstr" v=$log_item.deal_info.name b=0 e=25}
+		</a>
+	</div><!--end news_deal_info-->
+	<div class="news_deal_update">
+		<a href="{url r="deal#updatedetail" p="id=$log_item.id"}" class="linkgreen news_update_title ">{function name="msubstr" v=$log_item.log_title b=0 e=50}</a>
+		<div class="blank"></div>
+		<div class="log_info">
+			{function name="msubstr" v=$log_item.log_info b=0 e=300}
+		</div>
+		<div class="blank"></div>
+		<div>
+			<a class="ui-button green" rel="green" href="{url r="deal#updatedetail" p="id=$log_item.id"}">
+				<div>
+					<span>阅读更多</span>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="blank"></div>
+</div>
+{/foreach}

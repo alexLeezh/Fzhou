@@ -1,0 +1,48 @@
+<!-- backtop代码开始 -->
+<a id="gotop" href="javascript:void(0)"></a>
+<!-- backtop代码结束 -->
+
+<div class="blank"></div>
+
+<div>
+    <div class="footer">
+        <div class="container">
+            <ul class="footer-ul clear">
+                <li class="site-about">
+                    <p><a href="#"><img src="{$TMPL}/images/logo.jpg" /></a></p>
+                    <p>{$site_foot_desc}</p>
+                    <p>
+                        {foreach from=$helps item=help}
+                        <a href="{$help.url}" title="{$help.title}">{$help.title}</a>
+                        {/foreach}
+                    </p>
+                </li>
+                <li class="site-help">
+                    <ul class="footer-question">
+                        <li>
+                        
+                            <p class="footer-title">我的方舟</p>
+                            <p>{$site_foot_my}</p>
+                        </li>
+                        <li>
+                        
+                            <p class="footer-title">常见问题</p>
+                            <p>{$site_foot_question}</p>
+                        </li>
+                        <li>
+                        
+                            <p class="footer-title">项目发布</p>
+                            <p>{$site_foot_project}</p>
+                        </li>
+                    </ul>
+                </li>
+                <li class="site-copy">
+                    <p class="foot-site-buttons clear">{$site_foot_way}</p>
+                    <p class="foot-copy">
+                        {function name="app_conf" v="SITE_LICENSE"}
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

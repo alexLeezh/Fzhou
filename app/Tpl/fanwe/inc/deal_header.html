@@ -1,0 +1,38 @@
+<div class="blank"></div>
+<div class="page_title">
+			{$deal_info.name}
+</div>
+<div class="blank"></div>		
+<div class="switch2_nav" style="position:relative;">
+	
+<!--	<a class="ui-button green" style="float:right;" rel="green" href="{url r="deal#supports" p="id=$deal_info.id"}">
+		<div>
+			<span>支持项目</span>
+		</div>
+	</a>-->
+	{if $is_focus}
+	<div class="ui-button gray focus_deal" rel="gray" id="{$deal_info.id}">
+		<div>
+			<span>取消关注</span>
+		</div>
+	</div>
+	{else}
+	<div class="ui-button blue focus_deal" rel="blue" id="{$deal_info.id}">
+		<div>
+			<span>立即关注</span>
+		</div>
+	</div>
+	{/if}
+	<a class="ui-button green" style="float:right;" rel="green" onclick="deal_share(1)">
+		<div>
+			<span>转发</span>
+		</div>
+	</a>
+	<ul>
+    	<li {if ACTION_NAME eq 'supports' or ACTION_NAME eq 'supportdetail'}class="current"{/if}><a href="{url r="deal#supports" p="id=$deal_info.id"}">项目回报</a></li>	
+		<li {if ACTION_NAME eq 'show'}class="current"{/if}><a href="{url r="deal#show" p="id=$deal_info.id"}">基本信息</a></li>
+	<!--	<li {if ACTION_NAME eq 'video'}class="current"{/if}><a href="{url r="deal#video" p="id=$deal_info.id"}">视频</a></li>-->
+			
+	</ul>
+		
+</div>

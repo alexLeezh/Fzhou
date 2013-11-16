@@ -1,0 +1,321 @@
+{include file="inc/header.html"} 
+<script type="text/javascript">
+	var ROOT = '{$APP_ROOT}/keupload.php';
+</script>
+<?php
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/deal_publish.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/deal_publish.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/upload_deal_image.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/upload_deal_image.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/ajaxupload.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/switch_city.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/switch_city.js";
+$this->_var['dpagejs'][] = APP_ROOT_PATH."/system/region.js";
+$this->_var['dcpagejs'][] = APP_ROOT_PATH."/system/region.js";
+?>
+<script type="text/javascript" src="{function name="parse_script" v="$dpagejs" c="$dcpagejs"}"></script>
+<script type='text/javascript' src='{$APP_ROOT}/admin/public/kindeditor/kindeditor.js'></script>
+<link rel="stylesheet" type="text/css" href="{$TMPL}/css/projects.css" />
+<link rel="stylesheet" type="text/css" href="{$TMPL}/css/pulish.css" />
+<div class="blank"></div>
+<script>
+jQuery(function($){
+	var xmVal = $('#xmname').attr('myval');
+	$('#xmname').val(xmVal);
+	$('#xmname').focus(function(){
+		var focusV = $('#xmname').val();
+		if(focusV == xmVal&&focusV=="DreamerHouse梦中家一起来打造我们的世外桃源吧")
+		{
+			$('#xmname').val("");
+		}		
+	}).blur(function(){
+		var blurV = $('#xmname').val();
+		if(blurV == "")
+		{
+			$('#xmname').val(xmVal);
+		}		
+	});
+})
+</script>
+
+<div class="">
+	<div class="wrap">
+			<div class="blank"></div>
+			<div class="pulish_project_navs">
+				<ul>
+					<li class="current">简易发布</li>
+					<li>详细介绍</li>
+					<li>项目执行</li>
+					<li>问题与挑战</li>					
+				</ul>
+			</div>
+			<div class="blank"></div>
+			<div class="deal-publish-left">
+				<form id="project_form" action="{url r="project#save"}" method="post">
+					<div class="form_row my_form_row" style="height:85px;padding-top:10px;">
+						<label class="title w100 my_title">项目名称</label>
+						<input type="text" id="xmname" class="textbox" name="name" myval="{$deal_item.name}" value="{$deal_item.name}" style="font-size:12px;width:275px;"/>
+						<div class="blank1"></div>
+						<div class="form_tip"></div>
+						<div class="blank15"></div>
+					</div>
+					<div class="form_row my_form_row" >
+						<div class="blank15"></div>
+						<label class="title w100 my_title" style="width:270px;">筹款金额及天数</label>
+						
+						<div class="my_cla ex_my_cla">
+							<label class="title w100 ex_my_title">筹款金额</label>
+							<input type="text" value="{function name="round" v=$deal_item.limit_price e=2}" class="textbox" name="limit_price" style="width:65px;" /> 
+							<label class="tip_box my_tip_box" style="padding:0;">元</label>
+						</div>
+						
+						<div class="my_cla ex_my_cla">
+							<label class="title w100 ex_my_title">筹款天数</label>
+							<input type="text" value="{$deal_item.deal_days}" class="textbox" name="deal_days" style="width:65px;" /> 
+							<label class="tip_box my_tip_box" style="padding:0">天</label>	
+						</div>		
+						<div class="blank15"></div>			
+					</div>	
+					
+					<div class="form_row my_form_row">
+						<div class="blank15"></div>
+						<label class="title w100 my_title" style="width:270px;">为项目定位标签</label>
+						
+						<div class="f_l cate_list">
+							{foreach from=$cate_list item="cate_item" key=key}
+							<span rel="{$cate_item.id}">{$cate_item.name}</span>
+							{/foreach}
+							<input type="hidden" name="cate_id" value="{$deal_item.cate_id}" />
+						</div>
+						<div class="blank15"></div>
+					</div>
+					
+													
+					<div class="border_form_row">
+						<div class="blank15"></div>
+						<div class="form_row">
+							<label class="title w100">简要说明:</label>
+							<textarea name="brief" class="textarea2">{$deal_item.brief}</textarea>
+							<div class="blank1"></div>
+							<div class="form_tip">不超过100个字，简要描述一下你的项目</div>
+							<div class="blank15"></div>
+						</div>
+						
+						<div class="form_row">
+							<label class="title w100">封面图片:</label>
+							<div class="f_l">
+								<label class="fileupload" onclick="upd_file(this,'image_file');">
+								<input type="file" class="filebox" name="image_file" id="image_file"/>						
+								</label>
+								<label class="fileuploading hide" ></label>
+								
+							</div>
+							<div class="blank15"></div>
+						</div>
+						<div class="form_row">
+							<label class="title w100">视频地址:</label>
+							<input type="text" value="{$deal_item.vedio}" class="textbox" style="width:202px;"  name="vedio" />
+							<div class="blank1"></div>
+							<div class="form_tip">我们非常建议你提交一段几分钟的宣传视频。 支持土豆，优酷，酷六。</div>
+							<div class="blank15"></div>
+						</div>
+						<div class="form_row">
+							<label class="title w100">常见问题:<br /> <a href="javascript:void(0);" id="add_faq" class="linkgreen">添加</a></label>
+							<div style="float:left; width:202px;" id="faq_list">
+								{if $deal_item.faq_list}
+								{foreach from=$deal_item.faq_list item=faq_item}
+								{include file="inc/deal_faq_item.html"}			
+								{/foreach}		
+								{else}
+								{include file="inc/deal_faq_item.html"}
+								{/if}				
+							</div>
+							
+							<div class="blank15"></div>
+						</div>
+						
+					</div>
+					<div class="blank15"></div>
+					<div class="submit_btn_row">
+						<input type="hidden" name="image" value="{$deal_image.url}" />
+						<input type="hidden" name="savenext" value="0" />
+						<div class="ui-button gray" rel="gray" id="savenow">
+							<div>
+								<span>先保存一下</span>
+							</div>
+						</div>
+						<div class="ui-button green" rel="green" id="savenext" style="margin-left:5px;">
+							<div>
+								<span>下一步</span>
+							</div>
+						</div>
+						<input type="hidden" value="1" name="ajax" />
+						<input type="hidden" name="id" value="0" />
+						<div class="blank15"></div>
+					</div>
+				
+				</form>
+			</div>
+			<div class="deal-publish-right">
+				<div class="page_title">
+					<span id="deal_title">{$deal_item.name}</span>
+				</div>
+				<div class="blank"></div>		
+				<div class="switch2_nav" style="position:relative;">
+					
+					<a class="ui-button green" style="float:right;" rel="green" href="#">
+						<div>
+							<span>支持项目</span>
+						</div>
+					</a>
+					<div class="ui-button blue focus_deal" rel="blue" >
+						<div>
+							<span>立即关注</span>
+						</div>
+					</div>
+					<a class="ui-button green" style="float:right;" rel="green">
+						<div>
+							<span>转发</span>
+						</div>
+					</a>
+					<ul>
+						<li class="current"><a href="#">项目主页</a></li>
+						<li><a href="#">回报</a></li>			
+					</ul>
+						
+				</div>
+				<div class="deal-show">
+					<div class="deal-title"></div>
+					<div class="blank"></div>
+					<div class="deal-info clear">
+						<div class="deal-info-left">
+							<div class="deal-remark box">
+								<div class="deal-info-title">项目简介</div>
+								<div class="blank"></div>
+								<div class="deal-tags clear">
+									<span>
+									<a href="#" >项目标签（发布完后自动提取）</a>
+									</span>
+								</div>
+								<div class="blank"></div>
+								<div class="content">
+									<span id="deal_brief">简要说明</span>
+								</div>
+							</div>
+							<div class="blank"></div>
+							<div class="deal-news box">
+								<div class="deal-info-title">
+								<span class="f_l">动态更新</span>
+								<span class="f_r deal-news-date">
+								发起日期： {function name="to_date" v=$deal_item.begin_time f="Y年m月d日H:i"}<br/>
+								结束日期： {function name="to_date" v=$deal_item.end_time f="Y年m月d日H:i"}
+								</span>
+								</div>
+								<div class="blank" style="height:115px;"></div>
+								<a class="ui-button green" rel="green">
+									<div>
+										<span>查看更多内容</span>
+									</div>
+								</a>
+								<div class="blank1"></div>
+							</div>
+						</div>
+						<div class="deal-info-right">
+							<div class="deal-anthor box">
+								<div class="deal_user_box clear">
+									<div class="deal-info-title">团队介绍</div>
+									<div class="blank"></div>
+									<div class="deal_user_avatar">
+									<a href="{url r="home" p="id=$user_info.id"}"><img class="user_pic" src="{function name="get_user_avatar" uid=$user_info.id type="middle"}"/></a>
+									</div>
+									<div class="deal_user_info clear">
+										<div class="deal_user_name">{$user_info.user_name}</div>
+										<div class="deal__zijin_t">本项目所需资金 </div>
+										<div class="deal__zijin">
+											<span class=" f_l">¥<font id="price">{function name="round" v=$deal_item.limit_price e=2}</font>元</span>
+											<a class="ui-button green f_r" style="float:right; margin-top:5px;" id="add_update" rel="green">
+												<div>
+													<span>发送私信</span>
+												</div>
+											</a>	
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<div class="blank"></div>
+							<div class="deal-video">
+								<img alt="" src="{$TMPL}/images/07.jpg" width="360" height="200">
+								<!-- 
+								<embed wmode="opaque" wmode="opaque" src="{$deal_info.source_vedio}" allowFullScreen="true" quality="high" width="360" height="276" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+								 -->
+							</div>
+						</div>
+					</div>
+					<div class="blank"></div>
+					<div class="deal-other">
+						<div class="deal-other-tabs clear">
+							<ul class="deal-desc-tabs clear">
+								<li class="curr">
+									<a href="javascript:;" title="项目详情" ref="project_detial">项目详情</a>
+								</li>
+								<li>
+									<a href="javascript:;" title="风险声明OR问答" ref="project_question">风险声明OR问答</a>
+								</li>
+								<li>
+									<a href="javascript:;" title="支持者" ref="project_zhichizhe">支持者</a>
+								</li>
+								<li>
+									<a href="javascript:;" title="评论" ref="project_pinglun">评论</a>
+								</li>
+							</ul>
+							<div class="deal-tabs-press">
+								<div class="">
+									<span class="support_amount">已筹得0元</span>
+									<span class="remain_days">剩余<font id="deal_days">{$deal_item.deal_days}</font>天</span>
+								</div>
+								<div class="project-progress-container">
+				                    <div class="progress-bar fl" title="0%">
+				                    </div>
+				                </div>
+							</div>
+							
+						</div>
+						<div class="deal-bottom">
+							<div id="project_detial" class="deal-show-item clear" style="display:block;">
+								<div class="deal-detial-desc"><span style="font-size:14px;">项目详情<span></div>
+								<div class="deal-detial-other">
+									<p class="detial-title">为什么要这么做</p>
+									<p class="detial-desc">{$deal_info.xmdo}</p>
+									<p class="detial-title">若干亮点</p>
+									<p class="detial-desc">{$deal_info.xmld}</p>
+									<p class="detial-title">执行计划</p>
+									<p class="detial-desc">{$deal_info.jihua}</p>
+									<p class="detial-title">我和我的团队优势</p>
+									<p class="detial-desc">{$deal_info.youshi}</p>
+									<p class="detial-title">风险声明</p>
+									<p class="detial-desc">{$deal_info.fengxian}</p>
+									<p class="detial-title">挑战</p>
+									<p class="detial-desc">{$deal_info.tiaozhan}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+			 
+			 
+			<div class="blank"></div>
+			
+	
+	</div>
+</div>
+
+<div class="blank"></div>
+{include file="inc/footer.html"} 
+
+
+
+

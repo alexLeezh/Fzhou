@@ -1,0 +1,121 @@
+{include file="inc/header.html"} 
+<script type="text/javascript">
+	var ROOT = '{$APP_ROOT}/keupload.php';
+</script>
+<?php
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/deal_publish.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/deal_publish.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/upload_deal_image.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/upload_deal_image.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/ajaxupload.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/switch_city.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/switch_city.js";
+$this->_var['dpagejs'][] = APP_ROOT_PATH."/system/region.js";
+$this->_var['dcpagejs'][] = APP_ROOT_PATH."/system/region.js";
+?>
+<script type="text/javascript" src="{function name="parse_script" v="$dpagejs" c="$dcpagejs"}"></script>
+<script type='text/javascript' src='{$APP_ROOT}/admin/public/kindeditor/kindeditor.js'></script>
+<style>
+
+.white_box{background:none repeat scroll 0 0 #F9F9F9;border:none;}
+.my_label{width:330px;height:35px;background-color:#1AA9D1;border-radius:3px;line-height:35px;color:#ffffff;font-size:14px;text-align:center;}
+.my_form_row{border:1px solid #DCDCDC;border-radius:2px;width:290px;margin-top:10px;background:none repeat scroll 0 0 #ffffff;padding:0px 20px;margin-bottom:15px;}
+.my_title{ width:130px;font-weight:bold;color:#676767;text-align:left;}
+
+
+.ke_form{border:none;}
+.ke-container{background-color:#ffffff;}
+.ke-toolbar-outer{background:none repeat scroll 0 0 #FFFFFF;height:40px;border:1px solid #1AA9D1;border-radius:2px;}
+.ke-textarea-table{margin-top:10px;}
+.ke-textarea-table td{border:1px solid #1AA9D1;border-radius:2px;margin-top:15px;}
+
+</style>
+<div class="blank"></div>
+
+<div class="shadow_bg">
+	<div class="wrap white_box" >
+
+			<div class="page_title">
+			发起项目
+			</div>
+			<div class="switch_nav">
+				<ul>
+					<li class="current"><a href="#">项目介绍</a></li>					
+				</ul>
+			</div>
+			
+			<div class="public_left" style="width:330px;">
+				<div class="my_label">在发布项目前请完善您的个人资料</div>
+				<form id="project_form" action="{url r="project#save"}" method="post">									
+
+				<div class="form_row my_form_row">
+					<label class="title w100 my_title" style="height:50px;line-height:50px;">项目简介与定位</label>
+					<label class="title w100 my_title" style="width:65px;float:right;height:50px;line-height:50px;color:#1AA9D1;">
+						<span style="font-size:18px;">&or;</span>工具栏</label>
+					<div class="ke_form f_l">
+					{function name="my_show_ke_form" text_name="descript" width="285" height="300" ctn=""}
+					</div>
+					<div class="blank15"></div>
+				</div>
+
+
+				<div class="submit_btn_row">
+					<input type="hidden" name="image" value="{$deal_image.url}" />
+					<input type="hidden" name="savenext" value="0" />
+					<div class="ui-button gray" rel="gray" id="savenow">
+						<div>
+							<span>先保存一下</span>
+						</div>
+					</div>
+					<div class="ui-button green" rel="green" id="savenext" style="margin-left:5px;">
+						<div>
+							<span>下一步</span>
+						</div>
+					</div>
+					<input type="hidden" value="1" name="ajax" />
+					<input type="hidden" name="id" value="0" />
+					<div class="blank15"></div>
+				</div>
+				
+			</form>
+				
+			</div>
+			
+			<div class="public_right">
+				<div class="deal_preview_title">编辑预览</div>
+				<div class="blank"></div>
+				<div class="deal_item_box">
+					<div class="deal_content_box">
+					<img id="image" src="{if $deal_image.thumb_url eq ''}{$TMPL}/images/empty_thumb.gif{else}{$deal_image.thumb_url}{/if}" />
+					<div class="blank"></div>
+					<a href="#" class="deal_title" id="deal_title">项目的名称</a>
+					<div class="blank"></div>
+					{$user_info.user_name}&nbsp;&nbsp;(<span id="province">省份</span><span id="city">城市</span>)
+					<div class="blank"></div>
+					<div id="deal_brief">简要说明</div>
+					</div>
+					<div class="deal_item_dash"></div>
+					<div class="deal_content_box">
+						<div class="ui-progress">
+							<span style="width:100%;"></span>
+						</div>
+						<div class="blank"></div>
+						<div class="div3"><span class="num">100%</span><span class="til">达到</span></div>
+						<div class="div3"><span class="num" ><font id="price">0</font>元</span><span class="til">金额</span></div>
+						<div class="div3"><span class="num"><font id="deal_days">0</font>天</span><span class="til">剩余时间</span></div>
+						<div class="blank1"></div>
+					</div>
+				</div>
+				
+				
+				
+			</div>
+			<div class="blank"></div>
+			
+	
+	</div>
+</div>
+<div class="blank"></div>
+{include file="inc/footer.html"} 
+
+

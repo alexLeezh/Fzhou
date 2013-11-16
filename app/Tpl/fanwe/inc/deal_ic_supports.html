@@ -1,0 +1,22 @@
+{foreach from=$support_list item=support_item key=key}
+<div class="support-item {if ($key + 1) % 2 eq 0 }support-item-last{/if}">
+	<div class="support-log-info">
+		感谢 <a href="{url r="home" p="id=$support_item.user_id"}" class="linkgreen">{$support_item.user_info.user_name}</a> 对本项目的支持，您将获得
+	</div>
+	<div class="support-img">
+		
+		{foreach from=$support_item.images item=image key=index}
+		
+		<a href="javascript:;" title="{$support_item.description}"><img alt="" src="{function name="get_spec_image" v=$image.image w=158 h=120 g=1}" rel="{function name="get_spec_image" v=$image.image w=158 h=120}" width=158 height=120 />
+		</a>
+
+		{/foreach}
+		<a href="javascript:;" class="button">支持 {function name="format_price" v=$support_item.support_price} 金额</a>
+	</div>
+	
+	<div class="blank1"></div>
+</div>
+{/foreach}
+
+<div class="blank"></div>
+<div class="pages">{$support_pages}</div>

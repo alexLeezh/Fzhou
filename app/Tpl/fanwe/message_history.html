@@ -1,0 +1,126 @@
+{include file="inc/header.html"} 
+
+<?php
+
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/message.js";
+
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/message.js";
+
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/message.css";
+
+?>
+
+<link rel="stylesheet" type="text/css" href="{function name="parse_css" v="$dpagecss"}" />
+
+<style>
+
+
+.record-item{ width:900px; margin:0px auto;}
+.record-item ul{ list-style:none; width:100%;}
+.record-item ul li{ }
+.record-item ul .user-pic{ width:70px;}
+.record-item ul .user-pic img{  height:70px; width:70px;}
+.record-item ul .record-info{ position:relative;}
+.record-item ul .record-info .record-pic{ display:block; width:15px; height:28px; top:0px; position:absolute; }
+.record-item ul .record-info .dialogue{ z-index:1;border-radius:5px;  min-height: 52px; padding:8px; width:788px;}
+
+
+.record-me{}
+.record-me ul li{ float:left;}
+.record-me ul .record-info .record-pic{  background:url({$TMPL}/images/003.png) bottom no-repeat; left:10px;}
+.record-me ul .record-info .dialogue{ margin-left:24px; border:#19a9d1 solid 1px; background:#19a9d1; color:#fff;}
+
+.record-h ul li{ float:right;}
+.record-h .record-info .record-pic{  background:url({$TMPL}/images/004.png) bottom no-repeat; right:10px;}
+.record-h ul .record-info .dialogue{ margin-right:24px; border:#ddd solid 1px; background:#fff; color:#a8a8a8;}
+
+.write-color{ color:#fff;}
+.write-color:hover{ color:#fff;}
+.orange-color{ color:#F93;}
+.orange-color:hover{ color:#F93;}
+</style>
+<script type="text/javascript" src="{function name="parse_script" v="$dpagejs" c="$dcpagejs"}"></script>
+
+
+
+<div class="blank"></div>
+
+
+
+<div class="shadow_bg">
+
+	<div class="wrap white_box"">
+
+		<div class="page_title">
+
+			与 <a href="{url r="home" p="id=$dest_user_info.id"}" class="linkgreen">{$dest_user_info.user_name}</a> 的私信记录
+
+		</div>
+
+		<div class="switch_nav" style="height:1px;">
+
+		</div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="record-list">
+        	
+            {if $message_list}
+            {foreach from=$message_list item=message_item}
+            
+        	<div class="record-item {if $message_item.message_type eq 'inbox'}record-h{/if} {if $message_item.message_type eq 'outbox'}record-me{/if}">
+            	<ul class="clear">
+                	<li class="user-pic">
+                    	{function name="show_avatar" p="$message_item.send_user_id" t="small"}
+                    </li>
+                    <li class="record-info">
+                    	<span class="record-pic"></span>
+                		<div class="dialogue">
+                        	{if $message_item.message_type eq 'inbox'}
+
+                            <a href="{url r="home" p="id=$message_item.dest_user_id"}" class="orange-color">{$message_item.dest_user_name}</a> : {function name="nl2br" v=$message_item.message}
+            
+                            {/if}
+            
+                            {if $message_item.message_type eq 'outbox'}
+            
+                            发送给 <a href="{url r="home" p="id=$message_item.dest_user_id"}" class="orange-color">{$message_item.dest_user_name}</a> : {function name="nl2br" v=$message_item.message}
+            
+                            {/if}
+                        	<div class="blank"></div>
+
+                            <div class="message_pass_date {if $message_item.message_type eq 'outbox'} write-color{/if}">{function name="pass_date" v=$message_item.create_time}</div>
+            
+                            <div class="message_op"> <a href="javascript:void(0);" onclick="send_message({$message_item.dest_user_id});" class=" {if $message_item.message_type eq 'outbox'} write-color{/if} ">回复</a> | <a href="{url r="message#delmessage" p="id=$message_item.id"}" class=" delmessage {if $message_item.message_type eq 'outbox'} write-color{/if}">删除</a></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="blank"></div>
+            
+            
+            {/foreach}
+            <div class="blank"></div>
+
+            <div class="pages">{$pages}</div>
+    
+            {else}
+    
+            <div class="empty_tip">没有任何私信记录</div>
+    
+            {/if}
+    
+            </div>
+            <div class="blank"></div>
+        </div>
+        
+		
+
+				
+
+	</div>
+
+</div>
+
+<div class="blank"></div>
+
+{include file="inc/footer.html"} 

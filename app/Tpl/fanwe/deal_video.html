@@ -1,0 +1,342 @@
+{include file="inc/header.html"}
+<?php
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/deal.css";
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/deal_comment.css";
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/deal_support.css";
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/deal_log.css";
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/center.css";
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/fancybox.css";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/jquery.fancybox.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/deal.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/deal.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/faq.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/faq.js";
+
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/deal_comment.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/deal_comment.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/discover.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/discover.js";
+
+
+?>
+<link rel="stylesheet" type="text/css" href="{function name="parse_css" v="$dpagecss"}" />
+<script type="text/javascript" src="{function name="parse_script" v="$dpagejs" c="$dcpagejs"}"></script>
+<div class="blank"></div>
+<div class="">
+  <div class="wrap "> {include file="inc/deal_header.html"}
+    <div class="deal-show">
+      <div class="deal-title"></div>
+      <div class="blank"></div>
+      <div class="deal-info clear"> {if $deal_info.source_vedio neq ''}
+        <div class="blank"></div>
+        <embed wmode="opaque"wmode="opaque"src="{$deal_info.source_vedio}" allowFullScreen="true" quality="high" width="1200" height="630" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash">
+        </embed>
+        <div class="blank1"></div>
+        {/if} </div>
+      <div class="blank"></div>
+      
+      
+      
+      
+      <div class="deal-other">
+        <div class="deal-other-tabs clear">
+          <ul class="deal-desc-tabs clear">
+            <li class="curr"> <a href="javascript:;" title="项目详情" ref="project_detial">项目详情</a> </li>
+            <li> <a href="javascript:;" title="风险声明OR问答" ref="project_question">风险声明OR问答</a> </li>
+            <li> <a href="javascript:;" title="支持者" ref="project_zhichizhe">支持者</a> </li>
+            <li> <a href="javascript:;" title="评论" ref="project_pinglun">评论</a> </li>
+          </ul>
+          <div class="deal-tabs-press">
+            <div class=""> <span class="support_amount">已筹得{$deal_info.support_amount_format}元</span> <span class="remain_days">剩余{$deal_info.remain_days}天</span> </div>
+            <div class="project-progress-container">
+              <div class="progress-bar fl" title="{$deal_info.percent}%"> <span class="projress-scroll fr">{$deal_info.percent}%</span> </div>
+            </div>
+          </div>
+          <script type="text/javascript">
+						$('.progress-bar').each(function(index, element) {
+					    	var percent = $(this).attr('title');
+					        var _l=percent.substr(0,percent.indexOf("%"));
+					        if(!isNaN(_l)&&parseInt(_l)<=12) $(this).animate({width:26},1000);
+					    	else if(!isNaN(_l)&&parseInt(_l)>=100) $(this).animate({width:'100%'},1000);
+					        else $(this).animate({width:percent},1000);
+					    });
+					</script> 
+        </div>
+        <div class="deal-bottom">
+          <div id="project_detial" class="deal-show-item clear" style="display:block;">
+            <div class="deal-detial-desc">{$deal_info.description}</div>
+            <div class="deal-detial-other"> {if $deal_info.xmdo neq ''}
+              <p class="detial-title">为什么要这么做</p>
+              <p class="detial-desc">{$deal_info.xmdo}</p>
+              {/if}
+              {if $deal_info.xmld neq ''}
+              <p class="detial-title">若干亮点</p>
+              <p class="detial-desc">{$deal_info.xmld}</p>
+              {/if}
+              {if $deal_info.jihua neq ''}
+              <p class="detial-title">执行计划</p>
+              <p class="detial-desc">{$deal_info.jihua}</p>
+              {/if}
+              {if $deal_info.youshi neq ''}
+              <p class="detial-title">我和我的团队优势</p>
+              <p class="detial-desc">{$deal_info.youshi}</p>
+              {/if}
+              {if $deal_info.fengxian neq ''}
+              <p class="detial-title">风险声明</p>
+              <p class="detial-desc">{$deal_info.fengxian}</p>
+              {/if}
+              {if $deal_info.tiaozhan neq ''}
+              <p class="detial-title">挑战</p>
+              <p class="detial-desc">{$deal_info.tiaozhan}</p>
+              {/if}
+              </div>
+          </div>
+          <div id="project_question" class="deal-show-item clear">
+            <div class="deal_qa"> {foreach from=$deal_faq_list item=faq key=key}
+              <div class="faq_question" id="menu_{$faq.id}" rel="{$faq.id}"> - {$faq.question}</div>
+              <div class="faq_answer" id="answer_{$faq.id}" rel="{$faq.id}">{function name="nl2br" v=$faq.answer}</div>
+              <div class="blank"></div>
+              {/foreach} </div>
+            <div class="blank"></div>
+            <div class="deal_contact">
+              <div class="f_l">如果您对项目有疑问，可以在此向发起人咨询。</div>
+              <div class="f_r">
+                <div class="ui-button blue" rel="blue" onclick="send_message({$deal_info.user_id});">
+                  <div> <span>对发起人提问</span> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="project_zhichizhe" class="deal-show-item clear">
+            <div id="supports_list"></div>
+          </div>
+          <script type="text/javascript">
+						function load_comments(data,action){
+							$.ajax({ 
+								url: action,
+								dataType: "json",
+								data:data,
+								type: "POST",
+								success: function(obj){
+									$("#ddddd").html(obj.html);
+								},
+								error:function(obj)
+								{
+									alert("请求错误，请及时联系管理员！");
+								}
+							});		
+						}
+						
+						function load_support(data,action){
+							$.ajax({ 
+								url: action,
+								dataType: "json",
+								data:data,
+								type: "POST",
+								success: function(obj){
+									$("#supports_list").html(obj.html);
+								},
+								error:function(obj)
+								{
+									alert("请求错误，请及时联系管理员！");
+								}
+							});		
+						}
+						function load_logs(){
+							$.ajax({ 
+								url: '{url r="deal#getupdates"}',
+								dataType: "json",
+								data:{id:"{$deal_info.id}"},
+								type: "POST",
+								success: function(obj){
+									$("#deal_logs").html(obj.html);
+								},
+								error:function(obj)
+								{
+									alert("请求错误，请及时联系管理员！");
+								}
+							});		
+						}
+						
+						function replycomment(obj){
+							if($(obj).parent().parent().parent().find(".comm-re").css("display")=="none")
+								$(obj).parent().parent().parent().find(".comm-re").show();
+							else
+								$(obj).parent().parent().parent().find(".comm-re").hide();		
+						}
+						function sendclick(obj){
+							if($(obj).find("div span").html()!="发送中")
+							$(obj).parent().parent().submit();
+						}
+						
+						function delcomment(obj){
+							var ajaxurl = $(obj).attr("action");
+							var comment_box = $(obj).parent().parent().parent().parent().parent();
+							$.showConfirm("确认要删除该记录吗？",function(){
+								
+								var query = new Object();
+								
+								query.ajax = 1;
+								$.ajax({ 
+									url: ajaxurl,
+									dataType: "json",
+									data:query,
+									type: "POST",
+									success: function(ajaxobj){
+										$(comment_box).remove();
+										$("#comment_"+ajaxobj.logid+"_tip").html(ajaxobj.counthtml);
+										close_pop();
+									},
+									error:function(ajaxobj)
+									{
+										if(ajaxobj.responseText!='')
+										alert(ajaxobj.responseText);
+									}
+								});
+							});
+							return false;	
+						}
+
+						function logs_show_content(obj){
+							var _rel=$(obj).attr("rel");
+							var _p_obj = $(obj).parent().parent();
+							$(".deal-logs-item .content").each(function(index, element) {
+                                if($(this).attr("rel")==_rel){
+                                	$(this).parent().find(".title span:last").attr("class","icon-curr");
+									$(this).slideDown();	
+								}else{
+									$(this).parent().find(".title span:last").attr("class","icon");
+									$(this).slideUp();
+								}
+                            });
+						}
+						//load_comments({id:"{$deal_info.id}"},'{url r="deal#getcomments"}');
+                    	//$(document).ready(function() {
+                        	//alert(1);
+                    		//load_logs();
+                            load_comments({id:"{$deal_info.id}"},'{url r="deal#getcomments"}');
+							load_support({id:"{$deal_info.id}"},'{url r="deal#getsupports"}');
+							$(".userComment").hover(function(){
+								$(this).find(".delcomment").show();
+							},function(){
+								$(this).find(".delcomment").hide();
+							});
+
+							
+							$(".send_btn").click(function(e) {
+								if($("#comment_input").val()==''||$("#comment_input").val()=='发表评论') {
+									$("#comment_input").focus();
+									return;
+								}
+                                $(this).parent().parent().submit();
+                            });
+							$(".comment_form").submit(function(e) {
+								var _obj=$(this);
+                                $.ajax({ 
+									url: $(_obj).attr("action"),
+									dataType: "json",
+									data:$(_obj).serialize(),
+									type: "POST",
+									success: function(ajaxobj){
+										if(ajaxobj.status==1){
+											load_comments($(_obj).serialize(),$(_obj).attr("back"));
+										}
+									},
+									error:function(ajaxobj)
+									{
+										alert("请求错误，请及时联系管理员！");
+									}
+								});
+								return false;
+                            });
+
+							
+                        //});
+
+							function comment_form_submit(obj){
+								var _obj=$(obj);
+                                $.ajax({ 
+									url: $(_obj).attr("action"),
+									dataType: "json",
+									data:$(_obj).serialize(),
+									type: "POST",
+									success: function(ajaxobj){
+										if(ajaxobj.status==1){
+											load_comments($(_obj).serialize(),$(_obj).attr("back"));
+										}
+									},
+									error:function(ajaxobj)
+									{
+										alert("请求错误，请及时联系管理员！");
+									}
+								});
+								return false;
+							}
+	                        
+                    </script>
+          <div id="project_pinglun" class="deal-show-item clear">
+            <div class="center-comment-main"> {if $user_info}
+              <div>
+                <form name="comment_form"  class="comment_form" action="{url r="deal#submitcomment" p="id=$deal_info.id"}" back="{url r="deal#getcomments" p="id=$deal_info.id"}">
+                <textarea name="content" id="comment_input" onblur="if(this.value=='') this.value='发表评论'" onfocus="if(this.value=='发表评论') this.value=''" style="min-width:730px; width:730px; max-width:730px;">发表评论</textarea>
+                <div class="blank"></div>
+                <div class="comment-btn" style="display:block;">
+                  <div class="ui-button green send_btn" rel="green">
+                    <div> <span>发送</span> </div>
+                  </div>
+                  <div class="blank"></div>
+                </div>
+                <input type="hidden" name="ajax" value="1" />
+                </form>
+              </div>
+              {else}
+              <div class="comment-content" style="font-size:12px;">请登录后评论，立即 <a href="{url r="user#login"}" class="linkgreen">登录</a> 或 <a href="{url r="user#register"}"  class="linkgreen">注册</a></div>
+              {/if}
+              <div class="blank"></div>
+              <div id="ddddd"></div>
+              <div class="blank"></div>
+              <div class="pages">{$pages}</div>
+              <script type="text/javascript">
+								function change_page(obj){
+									var action=$(obj).attr("action");
+									if(action.indexOf("getcomments")>-1)
+										load_comments({id:"{$deal_info.id}"},action);
+									else if(action.indexOf("getsupports")>-1)
+										load_support({id:"{$deal_info.id}"},action);
+								}
+                            </script> 
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    <div class="blank"></div>
+  </div>
+</div>
+<div id="bdshare_html" style="display:none;"> 
+  <!-- Baidu Button BEGIN -->
+  <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"> <span class="bds_more">分享到：</span> <a class="bds_qzone"></a> <a class="bds_tsina"></a> <a class="bds_tqq"></a> <a class="bds_renren"></a> <a class="bds_t163"></a> <a class="shareCount"></a> </div>
+  <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=695700" ></script> 
+  <script type="text/javascript" id="bdshell_js"></script> 
+  <script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+	</script> 
+  <!-- Baidu Button END --> 
+</div>
+<script type="text/javascript">
+function deal_share(user_id)
+{
+	$.weeboxs.open($("#bdshare_html").html(), {title: '分享',showCancel:false,width:300, showOk:false,type:'wee'});
+}
+</script>
+<div class="blank"></div>
+{include file="inc/footer.html"} 

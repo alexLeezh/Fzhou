@@ -1,0 +1,80 @@
+/* CSS Document */
+
+.lg-body{ background:#fff; margin-top:20px; margin-bottom:20px;}
+.lg-body .topTool{ background:#eee; margin:5px;  border-radius:5px; line-height:35px;}
+.lg-body .topTool span{ background:#eee; margin:5px;  border-radius:5px; line-height:35px; font-size:16px; color:#1e83af;}
+.lg-body .topTool a{ display:block; float:right; margin-top:2px; margin-right:3px;}
+.lg-body .topTool .qqLogin{ background:url(../images/qq-login.jpg) #eee no-repeat;  width:100px; height:30px;}
+.lg-body .topTool .weiboLogin{background:url(../images/weibo-login.jpg) #eee no-repeat;  width:100px; height:30px;}
+.lg-body .topTool .jeepLogin{ background:url(../images/jeep-login.jpg) #eee no-repeat;  width:100px; height:30px;}
+.lg-body .topTool .jeepRegister{ background:url(../images/jeep-register.jpg) #eee no-repeat;  width:100px; height:30px;}
+.lg-body .topTool .back{ background:url(../images/lg-back.jpg) #eee no-repeat;  width:70px; height:30px;}
+
+.lg-body .lg-main{}
+.lg-body .lg-main .inputBody{ margin-top:100px; padding-bottom:100px; margin-left:300px;}
+.lg-body .lg-main .inputBody ul{ list-style:none;}
+.lg-body .lg-main .inputBody ul li{ }
+.lg-body .lg-main .inputBody ul li a{ color:#1e83af; }
+.lg-body .lg-main .inputBody ul li .input-k,.input-v,.input-t{ display:block; float:left; }
+.lg-body .lg-main .inputBody ul li .input-k{ width:80px; text-align:right; margin-right:10px; font-size:14px; line-height:35px;}
+.lg-body .lg-main .inputBody ul li .input-v{ width:240px; }
+.lg-body .lg-main .inputBody ul li .input-v input[type=text],input[type=password]{ width:215px; }
+.lg-body .lg-main .inputBody ul li .input-t{ width:120px; color:#cbcbcb; line-height:35px;}
+
+
+.edit-body{ background:#fff; margin-top:20px; margin-bottom:20px; padding:30px; font-size:14px;}
+.edit-tabs{}
+.edit-tabs ul{ list-style:none; height:30px; background:#fff; width:100%;border-bottom:1px solid #ddd;}
+.edit-tabs ul li{ float:right; height:29px; cursor:pointer; border-radius:5px 5px 0px 0px; margin-left:3px; background:#1e83af;  border-left:1px solid #1e83af; border-top:1px solid #1e83af; border-right:1px solid #1e83af; border-bottom:1px solid #1e83af;}
+.edit-tabs ul .curr{ background:#fff;  border-color:#ddd;border-bottom-color:#fff; }
+.edit-tabs ul .set{ width:120px; float:left; background:#fff; color:#444; cursor:default; text-align:left; font-size:14px; font-weight:600; line-height:29px; border:none; border-left:1px solid #fff; border-top:1px solid #fff; border-right:1px solid #fff; border-bottom:1px solid #ddd;}
+.edit-tabs ul li a{color:#fff; text-decoration:none; font-size:14px; display:block; padding:7px 8px;}
+.edit-tabs ul .curr a{color:#444; }
+
+
+.edit-main{ margin-top:30px; }
+.edit-main .edit-user-pic{ width:200px; float:left;}
+.edit-main .edit-user-info{ margin-left:20px; float:left; width:710px;font-size:14px;color:#8d8d8d;}
+
+
+.edit-main .edit-user-info input[type=text],input[type=password]{ width:250px;}
+.edit-main .edit-user-info textarea{ width:400px; height:100px;}
+.edit-main .edit-user-info .edit-user-info-title{ margin-bottom:5px; margin-top:5px; }
+
+
+.edit-user-info .user-balance{ border:1px solid #ddd; border-radius:5px; height:120px; line-height:120px; padding-left:20px; padding-right:20px;}
+.edit-user-info .user-balance .tip{}
+.edit-user-info .user-balance .tools{}
+.edit-user-info .user-balance .tools a{ float:left; margin-top:10px; margin-left:5px;}
+
+
+#recharge,#extract{border:1px solid #ddd; border-radius:5px; margin-top:20px; }
+#recharge .recharge-tabs{ background:#eee;padding:10px; font-weight:600; padding-left:15px;}
+#recharge .recharge-main{ padding:20px;}
+
+#extract .extract-tabs{ background:#eee; padding:3px;}
+#extract .extract-tabs ul{ list-style:none;}
+#extract .extract-tabs ul li{ float:right; margin-left:5px; font-size:14px;}
+#extract .extract-tabs ul li a{ background:#1e83af; display:block; padding:7px 8px; color:#fff;}
+#extract .extract-tabs ul li .curr {background:#f3ad1a;}
+#extract .extract-tabs ul .tip { float:left; font-weight:600;padding:7px 8px;}
+#extract .extract-main{ padding:20px;}
+#extract .extract-main .extract-main-title{ display:block; width:120px; margin-right:10px; margin-bottom:8px; margin-top:5px;}
+#extract .extract-main #caifutong{ display:none;}
+#extract .extract-main #zhifubao{ display:none;}
+
+.edit-user-info .user-bind-web{ padding:60px;}
+.edit-user-info .user-bind-web a{ margin-right:10px;}
+
+
+.edit-user-info .user-safe{border:1px solid #ddd; border-radius:5px;}
+.edit-user-info .user-safe .safe-tabs{ background:#eee; padding:3px;}
+.edit-user-info .user-safe .safe-tabs ul{ list-style:none;}
+.edit-user-info .user-safe .safe-tabs ul li{ float:right; margin-left:5px; font-size:14px;}
+.edit-user-info .user-safe .safe-tabs ul li a{ background:#1e83af; display:block; padding:7px 8px; color:#fff;}
+.edit-user-info .user-safe .safe-tabs ul li .curr {background:#f3ad1a;}
+.edit-user-info .user-safe .safe-tabs ul .tip { float:left; font-weight:600;padding:7px 8px;}
+.edit-user-info .user-safe .safe-main{padding:20px;}
+.edit-user-info .user-safe .safe-main .safe-main-title{ display:block; width:120px; margin-right:10px; margin-bottom:8px; margin-top:5px;}
+.edit-user-info .user-safe .safe-main #denglu{ display:none;}
+

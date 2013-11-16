@@ -1,0 +1,59 @@
+/* CSS Document */
+
+
+/*  列表过滤条件
+*****************************************************/	
+	
+	
+.project-filter{ background:#fff; border-radius:3px; padding:5px;position:relative;  z-index:10; }
+.project-filter .filter-acts { width:120px; zoom:1; vertical-align:top; float:left; position:relative;} 
+.project-filter .filter-tags a{ 
+	display: block;
+	font-weight: normal;
+	float: left;
+	height: 23px;
+	line-height: 23px;
+	margin-right:5px;
+	padding: 3px 15px 2px 15px;
+	border-radius: 3px;
+	_display: inline;
+	white-space: nowrap;
+	border: #f8f8f8 1px solid;
+	background:#1e83af;
+	color:#fff;
+	font-size:13px;
+}
+.project-filter .filter-tags .curr{ background:#f3ad19;}
+
+
+.filter-acts .select {width:65px;background:#1e83af; height:0px;}
+.filter-acts input {width:80px;height:23px; border:none; line-height:23px; border-radius:3px; padding:3px; color:#fff; text-align:center; padding-right:7px; font-size:13px;_font-family: Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑",Tahoma, Arial, Helvetica, STHeiti; margin:0px; background:url(../images/icon_-trigon.png) #1e83af 75px 13px no-repeat;}
+div.selectbox-wrapper {
+	 width:90px; position:absolute; background:#1e83af;border:none; text-align:center; border-radius:3px 3px 3px 3px; top:32px; left:0px;
+	 z-index:15;
+}
+div.selectbox-wrapper ul li.selected {background: #f3ad19;}
+div.selectbox-wrapper ul li.current {
+	 background: #f3ad19;
+}
+div.selectbox-wrapper ul li {
+	padding:3px; cursor: pointer; line-height:20px; color: #fff;font-size:13px;
+}
+.selectbox { border:none;  display: block; padding-left:4px; width: 82px; cursor: pointer; padding-top:5px; height: 19px; background:url(images/bg01.gif) no-repeat;}
+
+.project-filter .filter-tags-others{ margin-top:10px; display:none;}
+.project-filter .filter-tags-others .filter-tags a{ margin-bottom:5px;text-decoration:none;}
+.project-filter .filter-tools{ float:right;}
+.project-filter .filter-tools ul{ list-style:none;}
+.project-filter .filter-tools ul li{  float:right; padding:5px;}
+.project-filter .filter-tools ul li a{display:block; width:17px; height:17px; text-decoration:none;}
+.project-filter .filter-tools ul li .filter-show-o-button{background:url(../images/vshow.jpg) no-repeat;}
+.project-filter .filter-tools ul li .bt-curr{background:url(../images/vshow.jpg) no-repeat;}
+.project-filter .filter-tools ul li .filter-show-list-lb{ background:url(../images/table-list.jpg) no-repeat;}
+.project-filter .filter-tools ul li .filter-show-list-lb-curr{ background:url(../images/table-list2.jpg) no-repeat;}
+.project-filter .filter-tools ul li .filter-show-list-fg{ background:url(../images/c-view-list.jpg) no-repeat;}
+.project-filter .filter-tools ul li .filter-show-list-fg-curr{ background:url(../images/c-view-list2.jpg) no-repeat;}
+
+
+
+a.search{ display:block; height:39px; line-height:39px; color:#646464; background:url(../images/button-bg.jpg) repeat-x; text-align:center;}

@@ -1,0 +1,48 @@
+.user_info_row{ margin:0px 0px 20px 0px; }
+.home_user_avatar{ float:left; width:125px; height:125px;}
+.home_user_avatar img{ width:125px; height:125px;}
+.home_user_desc{ float:left; width:500px;}
+
+.home_user_box{padding:10px;}
+.home_user_box .home_user_box_tabs{ background:#eeeeee;}
+.home_user_box .home_user_box_tabs ul{ list-style:none;}
+.home_user_box .home_user_box_tabs ul .home_user_login_name{ line-height:32px; font-size:14px; float:left; margin-left:20px;}
+.home_user_box .home_user_box_tabs ul .home_user_sixin{ float:right;}
+
+.home_user_info{ list-style:none; padding:20px; }
+.home_user_info li{ float:left; line-height:20px;}
+.home_user_info .userPic{  margin-right:15px;}
+.home_user_info .userPic img{ width:125px; height:125px;}
+.home_user_info .userWay{ width:250px;}
+.home_user_info .split{ width:1px; border-right:1px solid #dcdcdc;height:125px; margin-right:40px;}
+.home_user_info .userDesc{ width:500px;}
+
+
+.home_user_info-tabs{background:#e9e9e9; position:relative;}
+.home_user_info-tabs ul{ list-style:none; background:#e9e9e9; float:left;}
+.home_user_info-tabs ul li{ float:left; font-size:14px;border-top:3px solid #e9e9e9;}
+.home_user_info-tabs ul li a{ display:block; padding:8px 20px; color:#8c8c8c;}
+.home_user_info-tabs ul li.curr{ background:#fff; border-color: #1aa9d1;}
+.home_user_info-tabs ul li.curr a{ color:#1aa9d1;}
+.home_user_info-tabs ul li.deal-action-tab{ float:right;}
+
+
+.send_message{ display:inline-block; width:17px; height:12px; font-size:0px; line-height:0px; margin-left:5px; background:url(../images/message.gif) 0px 3px no-repeat; cursor:pointer;}
+
+.home_user_name{ font-size:30px; font-weight:bolder; font-family:"微软雅黑"; padding:0px 0px 10px 0px; line-height:30px;}
+.home_message{ }
+.home_user_join{ padding:5px 0px; color:#999; }
+.home_user_weibo{ padding:5px 0px;}
+.home_user_weibo .title{ font-size:20px; font-weight:bolder; font-family:"微软雅黑"; line-height:40px; }
+.home_user_desc{ color:#999;  }
+
+
+.home_projects_item{ padding:20px;border-bottom:1px dashed #dcdcdc;}
+.home_projects_item a{ font-size:14px;}
+.home_projects_item .project_item_pic{ width:250px; float:left;}
+.home_projects_item .project_item_info{ width:890px; float:left; margin-left:20px;}
+.home_projects_item .project_item_pic{}
+.home_projects_item .project_item_pic{}
+.home_projects_item .project_item_pic{}
+.home_projects_item .project_item_pic{}
+

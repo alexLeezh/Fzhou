@@ -1,0 +1,191 @@
+{include file="inc/header.html"} 
+<?php
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/refund.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/refund.js";
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/account.css";
+?>
+<link rel="stylesheet" type="text/css" href="{function name="parse_css" v="$dpagecss"}" />
+<script type="text/javascript" src="{function name="parse_script" v="$dpagejs" c="$dcpagejs"}"></script>
+
+<link rel="stylesheet" type="text/css" href="{$TMPL}/css/edit.css"/>
+<div class="blank"></div>
+
+<div class="shadow_bg">
+	<div class="wrap white_box"">
+		<div class="edit-body">
+           	<div class="clear"></div>
+           	<div  class="edit-tabs">{include file="inc/settings_tabs.html"}</div>
+		
+			<div class="blank"></div>
+			
+			<div class="left">
+				<div class="blank15"></div>
+							
+				<div class="edit-user-info">
+                   	<div class="user-balance clear">
+                       	<span class="tip fl"></span>
+                           <span class="tools fr">
+                           	<a href="javascript:;" bind="recharge" title="" ><img src="{$TMPL}/images/chongzhi.jpg" /></a>
+                           	<a href="javascript:;" bind="extract" title="" ><img src="{$TMPL}/images/tixian.jpg" /></a>
+                           </span>
+                       </div>
+                       {include file="inc/money_box.html"} 
+                       
+                       <div id="extract" class="user-balance-actions">
+                       	<div class="extract-tabs">
+                           	<ul class="clear">
+                               	<li><a href="javascript:;" bind="caifutong">提现到财付通</a></li>
+                                   <li><a href="javascript:;" bind="zhifubao">提现到支付宝</a></li>
+                                   <li><a href="javascript:;" bind="yinhangka" class="curr">提现到银行卡</a></li>
+                                   <li class="tip">提现</li>
+                               </ul>
+                           </div>
+                           <div class="extract-main">
+                           	<div id="caifutong" class="extract-types">
+                           		<form class="ajax_form" action="{url r="account#submitrefund"}">
+										
+									<div class="form_row">
+										<div class="blank15"></div>
+										<label class="title w100">财付通帐号:</label>
+										<input type="text" value="" class="textbox" name="account" />
+										<div class="blank1"></div>
+										<div class="form_tip"></div>
+										<div class="blank15"></div>
+									</div>
+									<div class="form_row">
+										<label class="title w100">提现金额:</label>
+										<input type="text" value="" class="textbox" name="money" />
+										<div class="blank1"></div>
+										<div class="form_tip">请填写你的开户行信息。</div>
+										<div class="blank15"></div>
+									</div>
+									
+									
+									<div class="submit_btn_row">
+										<div class="ui-button green" rel="green">
+											<div>
+												<span>确认提现</span>
+											</div>
+										</div>
+										<input type="hidden" value="1" name="ajax" />
+										<div class="blank15"></div>
+									</div>
+									
+								</form>
+                           		
+                           	
+                            </div>
+                            <div id="zhifubao" class="extract-types">
+                            	<form class="ajax_form" action="{url r="account#submitrefund"}">
+										
+									<div class="form_row">
+										<div class="blank15"></div>
+										<label class="title w100">支付宝帐号:</label>
+										<input type="text" value="" class="textbox" name="account" />
+										<div class="blank1"></div>
+										<div class="form_tip"></div>
+										<div class="blank15"></div>
+									</div>
+									<div class="form_row">
+										<label class="title w100">提现金额:</label>
+										<input type="text" value="" class="textbox" name="money" />
+										<div class="blank1"></div>
+										<div class="form_tip">请填写你的开户行信息。</div>
+										<div class="blank15"></div>
+									</div>
+									
+									
+									<div class="submit_btn_row">
+										<div class="ui-button green" rel="green">
+											<div>
+												<span>确认提现</span>
+											</div>
+										</div>
+										<input type="hidden" value="1" name="ajax" />
+										<div class="blank15"></div>
+									</div>
+									
+								</form>
+                            </div>
+                            <div id="yinhangka" class="extract-types">
+                            	<form class="ajax_form" action="{url r="account#submitrefund"}">
+										
+									<div class="form_row">
+										<div class="blank15"></div>
+										<label class="title w100">真实姓名:</label>
+										<input type="text" value="" class="textbox" name="user_r_name" />
+										<div class="blank1"></div>
+										<div class="form_tip">与开户行相对应的真实姓名</div>
+										<div class="blank15"></div>
+									</div>
+									<div class="form_row">
+										<label class="title w100">开户银行:</label>
+										<input type="text" value="" class="textbox" name="bank" />
+										<div class="blank1"></div>
+										<div class="form_tip">请填写你的开户行信息。</div>
+										<div class="blank15"></div>
+									</div>
+									<div class="form_row">
+										<label class="title w100">银行帐号:</label>
+										<input type="text" value="" class="textbox" name="account" />
+										<div class="blank1"></div>
+										<div class="form_tip">请填写真实的银行帐号与相关信息。</div>
+										<div class="blank15"></div>
+									</div>
+									<div class="form_row">
+										<label class="title w100">提现金额:</label>
+										<input type="text" value="" class="textbox" name="money" />
+										<div class="blank1"></div>
+										<div class="form_tip"></div>
+										<div class="blank15"></div>
+									</div>
+									
+									
+									<div class="submit_btn_row">
+										<div class="ui-button green" rel="green">
+											<div>
+												<span>确认提现</span>
+											</div>
+										</div>
+										<input type="hidden" value="1" name="ajax" />
+										<div class="blank15"></div>
+									</div>
+									
+								</form>
+                                
+                            </div>
+                        </div>
+                        
+                        <script type="text/javascript">
+                        	$(document).ready(function(e) {
+                                $(".extract-tabs ul li a").click(function(e) {
+                                    var _i=$(this).attr("bind");
+									if(_i==null||_i=="") return;
+									$(".extract-tabs ul li a").attr("class","");
+									$(this).attr("class","curr");
+									$(".extract-types").hide();
+									$("#"+_i).show();
+                                });
+					
+					
+								$(".user-balance .tools a").click(function(e) {
+									$(".user-balance-actions").hide();
+                                    var _i=$(this).attr("bind");
+									$("#"+_i).show();
+                                });
+                           	});
+                        </script>
+                        
+                    </div>
+                </div>
+
+	
+			</div><!--left-->
+			
+			
+			<div class="blank"></div>
+		</div>
+	</div>
+</div>
+<div class="blank"></div>
+{include file="inc/footer.html"} 

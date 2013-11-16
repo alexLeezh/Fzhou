@@ -1,0 +1,22 @@
+
+<div class="projectAppBox clear">
+    {foreach from=$act_list item=act key=key}
+    <div class="projectAppItem {if $key eq 2 || $key eq 3}projectAppItem-b{/if} {if ($key+1) mod 3 eq 0}projectAppItem-last{/if}">
+	    <a href="{url r="deal#show" p="id=$act.id"}" title="{$act.name}" target="_blank" >
+		    {if $key eq 2 || $key eq 3}
+		    <img src="{if $act.image eq ''}{$TMPL}/images/empty_thumb.gif{else}{function name="get_spec_image" v=$act.image w="620" h="302" g="1"}{/if}" alt="{$deal_item.name}" />
+		    {else}
+		    <img src="{if $act.image eq ''}{$TMPL}/images/empty_thumb.gif{else}{function name="get_spec_image" v=$act.image w="620" h="302" g="1"}{/if}" alt="{$deal_item.name}" />
+		    {/if}
+	    </a>
+	    <div class="projectAppDescBox">
+	        <div class="appDesc clear">
+	        	<img src="{$act.image}" class="appUserPic" />
+	            <div class="appTitle">
+	                <p>{function name="msubstr" v=$act.brief b=0 e=45}</p>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	{/foreach}
+</div>

@@ -1,0 +1,223 @@
+{include file="inc/header.html"} 
+<?php
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/add_item.css";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/upload_deal_item_image.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/upload_deal_item_image.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/edit_deal_item.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/edit_deal_item.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/ajaxupload.js";
+?>
+<script type="text/javascript" src="{function name="parse_script" v="$dpagejs" c="$dcpagejs"}"></script>
+<link rel="stylesheet" type="text/css" href="{function name="parse_css" v="$dpagecss"}" />
+<div class="blank"></div>
+
+<div class="shadow_bg">
+	<div class="wrap white_box">
+
+			<div class="page_title">
+			回报设置 - {$deal_item.name} 
+			</div>
+			<div class="switch_nav">
+				<ul>
+					<li><a href="{url r="project#edit" p="id=$deal_item.id"}">项目介绍</a></li>		
+					<li class="current"><a href="{url r="project#add_item" p="id=$deal_item.id"}">回报设置</a></li>					
+				</ul>
+			</div>
+					
+			<div class="blank"></div>
+			<div class="add_item_tip">
+				<h1>小提示：</h1>
+				<ul style="width:515px; letter-spacing:1px;">
+					<li style="padding:3px;">如何确定单项回报的支持金额？</li>
+					<li style="padding:3px;">其实，没有一个绝对的公式或是窍门可以让您准确的算出这个数字。这里有几个因素您可以考虑：</li>
+					<li style="padding:3px;">1、您的项目成本（全部预算分摊到回报里的成本）。我们不希望您在方舟上的筹款变成一个看起来“赔本的买卖”，除非您愿意自己额外的淘一些钱来达到推广产品的目的。</li>
+                    <li style="padding:3px;">2、执行回报的成本。尤其需要注意的是快递费用。</li>
+                    <li style="padding:3px;">3、您的态度。您希望支持者获得的回报是物有所值还是物超所值？</li>
+                    <li style="padding:3px;">4、回报的属性。如果您提供的是物质层面的回报，那么我想您还是比较容易估计一个大致的价值；如果您的回报偏向精神层面，那么请您想象一下如果叫您来支持，您是否愿意？</li>
+				</ul>
+			<div class="blank"></div>
+			<div class="link_dash"></div>
+			<div class="blank"></div>
+			
+			{if $deal_item_list}
+			<div class="full">
+			<table class="data-table">
+			<tr>
+				<th width="100">价格</th>
+				<th width="400">描述</th>
+				<th width="100">限额</th>
+				<th width="100">配送</th>
+				<th width="">操作</th>
+			</tr>
+			{foreach from=$deal_item_list item=item}
+			<tr class="item_row">
+				<td>
+					{function name="format_price" v=$item.price}
+				</td>
+				<td>{$item.description}</td>
+				<td>{if $item.is_limit_user eq 0}不限{else} {if $item.limit_user eq 0}不限{else}{$item.limit_user}位{/if}{/if}</td>
+				<td>{if $item.is_delivery eq 0}无需配送{else}运费 {if $item.delivery_fee eq 0}包邮{else}{function name="format_price" v=$item.delivery_fee}{/if}{/if}</td>
+				<td>
+					<a href="{url r="project#edit_item" p="id=$item.id"}">编辑</a> &nbsp; &nbsp;
+					<a href="{url r="project#del_item" p="id=$item.id"}" class="del_item">删除</a>
+				</td>
+			</tr>
+			{/foreach}
+			</table>
+			</div>
+			<div class="blank"></div>
+			{/if}
+			
+			<div style="width:300px; margin: 0 auto;" id="add_item_row">
+			<div class="add_item_btn f_l" id="add_item_btn">
+			<div class="ui-button gray" rel="gray">
+						<div>
+							<span>添加新的回报项目</span>
+						</div>
+			</div>
+			<div class="blank"></div>
+			</div>
+			
+			<div class="add_item_btn f_l" id="submit_deal_btn" url="{url r="project#submit_deal" p="id=$deal_item.id"}" jump="{url r="account#project"}" style="margin-left:10px;">
+			<div class="ui-button green" rel="green">
+						<div>
+							<span>提交审核</span>
+						</div>
+			</div>
+			<div class="blank"></div>
+			</div>
+			</div>
+			<div id="add_item_form" style="display:none;">
+				<form class="ajax_form" id="item_form" action="{url r="project#save_deal_item"}" method="post">		
+				<div class="public_left">									
+						
+						<div class="form_row">
+							<div class="blank15"></div>
+							<label class="title w100"><strong>支持金额:</strong></label>
+							<input type="text" value="" class="textbox" name="price" style="width:100px;" />
+							<label class="tip_box">元</label>
+							<div class="blank15"></div>
+						</div>
+						<div class="form_row">
+							<label class="title w100"><strong>项目回报:</strong></label>
+							<textarea name="description" class="textarea" style="width:290px;"></textarea>
+							<div class="blank15"></div>
+						</div>
+						<div style="width:416px; margin-left:90px;color:#a1a0a0;"><p>每个项目主要的回报最好由项目本身产生。如果项目目标是要录制一张专辑，那么回报也应该包括录制的CD。项目回报应该尽量确保实际价值与支持金额的对等。</p>
+<p><strong>以下提供几类回报作为参考：</strong></p><p><strong>项目成果产生的产品：</strong>如专辑、DVD。这些物品的定价应该与实际生活中的价值保持一致。</p><p><strong>创意合作：</strong>支持者作为角色出现在漫画，话剧，电影中。</p><p><strong>创意经验：</strong>发起人的一个感谢电话，与演员一起吃一顿饭，在支持者生日party上开演唱会。</p><p><strong>创意纪念品：</strong>活动快照，影片结尾的特别鸣谢，向支持者讲述一个与项目有关的故事。</p></div>
+<div class="blank"></div>
+						<div class="form_row">
+							<label class="title w100"><strong>上传图片:</strong></label>
+							<div class="f_l" style="position:relative;">
+								<label class="fileupload" onclick="upd_file(this,'image_file');">
+								<input type="file" class="filebox" name="image_file" id="image_file"/>						
+								</label>
+								<label class="fileuploading hide" ></label>
+							</div>
+							<div class="blank15"></div>
+						</div>
+						
+						<div class="form_row">
+							<label class="title w100"><strong>是否配送:</strong></label>
+							<div class="select_box">
+								<select name="is_delivery">
+									<option value="0">否</option>
+									<option value="1">是</option>
+								</select>
+							</div>
+							<div class="blank15"></div>
+						</div>
+						
+						<div class="form_row" style="display:none;">
+	
+							<label class="title w100"><strong>运费:</strong></label>
+							<input type="text" value="" class="textbox" name="delivery_fee" style="width:100px;" />
+							<label class="tip_box"><strong>元</strong></label>
+							<div class="blank15"></div>
+						</div>
+						
+						<div class="form_row">
+							<label class="title w100"><strong>是否限购:</strong></label>
+							<div class="select_box">
+								<select name="is_limit_user">
+									<option value="0">否</option>
+									<option value="1">是</option>
+								</select>
+							</div>
+							<div class="blank15"></div>
+						</div>
+						
+						<div class="form_row" style="display:none;">
+
+							<label class="title w100"><strong>限购人数:</strong></label>
+							<input type="text" value="" class="textbox" name="limit_user" style="width:100px;" />
+							<label class="tip_box">人</label>
+							<div class="blank15"></div>
+						</div>
+						
+						<div class="form_row">
+					
+							<label class="title w100"><strong>回报时间:</strong></label>
+							<label class="tip_box" style="padding-left:0px; padding-right:10px;"><strong>项目成功后</strong></label>
+							<input type="text" value="" class="textbox" name="repaid_day" style="width:100px;" />
+							<label class="tip_box"><strong>天</strong></label>
+							<div class="blank15"></div>
+						</div>
+				</div><!--end left-->
+				<div class="public_right">
+					<div class="deal_preview_title">编辑预览</div>
+					<div class="blank"></div>
+					<div class="item_preview">
+						<div id="support_price_box">支持￥<span id="support_price">0</span>元<div class="blank"></div></div>						
+						<div>0位支持者&nbsp;&nbsp;&nbsp;&nbsp;<span id="limit_user_box" style="display:none;">限额<span id="limit_user">0</span>位,剩余<span id="remain_user">0</span>位</span><div class="blank"></div></div>
+						<div id="repaid_content">回报内容</div>	
+										
+						<div id="image_box_outer" style="display:none;">
+							<div class="blank"></div>	
+							<div id="image_box">				
+								
+							</div>	
+							<div class="blank1"></div>					
+						</div>
+						<div id="repaid_day_box">
+							<div class="blank"></div>
+							预计回报发放时间：项目成功结束后<span id="repaid_day">0</span>天内
+							
+						</div>
+						<div id="delivery_box">
+							<div class="blank"></div>
+							运费 ￥<span id="delivery_fee_box">0</span>
+							
+						</div>
+						<div class="blank"></div>
+						<div class="ui-button_green">
+							<div>
+								<span>支持￥<font id="support_price_btn">0</font>元</span>
+							</div>
+						</div>
+						<div class="blank1"></div>
+					</div>
+				</div><!--end right-->
+				<div class="blank"></div>
+				<div class="add_item_btn" style="width:250px;">
+				<div class="ui-button green" rel="green">
+							<div>
+								<span>保存新的回报项目</span>
+							</div>
+				</div>
+				<a href="javascript:void(0);" id="cancel_add">取消添加</a>
+				</div>
+				<div class="blank"></div>
+				<input type="hidden" name="deal_id" value="{$deal_item.id}" />
+				<input type="hidden" name="ajax" value="1" />
+				</form>
+			</div>
+			<div class="blank"></div>
+	
+	</div>
+</div>
+
+<div class="blank"></div>
+{include file="inc/footer.html"} 
+
+

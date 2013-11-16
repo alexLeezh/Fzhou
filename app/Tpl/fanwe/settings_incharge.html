@@ -1,0 +1,72 @@
+{include file="inc/header.html"} 
+<?php
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/refund.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/refund.js";
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/account.css";
+?>
+<link rel="stylesheet" type="text/css" href="{function name="parse_css" v="$dpagecss"}" />
+<script type="text/javascript" src="{function name="parse_script" v="$dpagejs" c="$dcpagejs"}"></script>
+
+<link rel="stylesheet" type="text/css" href="{$TMPL}/css/edit.css"/>
+<div class="blank"></div>
+
+<div class="shadow_bg">
+	<div class="wrap white_box"">
+		<div class="edit-body">
+           	<div class="clear"></div>
+           	<div  class="edit-tabs">{include file="inc/settings_tabs.html"}</div>
+		
+			<div class="blank"></div>
+			
+			<div class="left">
+				<div class="blank15"></div>
+							
+				<div class="edit-user-info">
+                   	<div class="user-balance clear">
+                       	<span class="tip fl"></span>
+                           <span class="tools fr">
+                           	<a href="javascript:;" bind="recharge" title="" ><img src="{$TMPL}/images/chongzhi.jpg" /></a>
+                           	<a href="javascript:;" bind="extract" title="" ><img src="{$TMPL}/images/tixian.jpg" /></a>
+                           </span>
+                       </div>
+                       {include file="inc/money_box.html"} 
+                       
+                       <div id="recharge" class="user-balance-actions">
+	                       <div class="recharge-tabs">
+	                           	<span>充值</span>
+	                       </div>
+                           <div class="recharge-main">
+                           		<form class="ajax_form" action="{url r="account#do_incharge"}">
+										
+									<div class="form_row">
+										<div class="blank15"></div>
+										<label class="title w100">充值金额:</label>
+										<input type="text" value="" class="textbox" name="money" />
+										<div class="blank1"></div>
+										<div class="form_tip">人民币(元)</div>
+										<div class="blank15"></div>
+									</div>
+									<div class="submit_btn_row">
+										<div class="ui-button green" rel="green">
+											<div>
+												<span>确定，去付款</span>
+											</div>
+										</div>					
+										<a href="{url r="settings#account"}" class="cancel_incharge">取消充值</a>
+										<input type="hidden" value="1" name="ajax" />					
+										<div class="blank15"></div>
+									</div>
+								</form>
+                           </div>
+                       </div>
+                   </div>
+
+			</div><!--left-->
+			
+			
+			<div class="blank"></div>
+		</div>
+	</div>
+</div>
+<div class="blank"></div>
+{include file="inc/footer.html"} 

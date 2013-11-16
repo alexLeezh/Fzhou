@@ -1,0 +1,103 @@
+{include file="inc/header.html"} 
+<?php
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/index.css";
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/projects.css";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/index.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/index.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/discover.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/discover.js";
+
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/jquery-1.4.2.min";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/jquery.masonry.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/jquery.infinitescroll.js";
+?>
+<link rel="stylesheet" type="text/css" href="{function name="parse_css" v="$dpagecss"}" />
+<script type="text/javascript" src="{function name="parse_script" v="$dpagejs" c="$dcpagejs"}"></script>
+
+<script type="text/javascript" src="{$TMPL}/js/jquery.masonry.js"></script>
+<script type="text/javascript" src="{$TMPL}/js/jquery.infinitescroll.js"></script>
+
+<script type="text/javascript">
+function item_masonry(){ 
+	$('.projectItem img').load(function(){ 
+		$('.infinite_scroll').masonry({ 
+			itemSelector: '.masonry_brick',
+			columnWidth:283,
+			gutterWidth:20								
+		});		
+	});
+		
+	$('.infinite_scroll').masonry({ 
+		itemSelector: '.masonry_brick',
+		columnWidth:283,
+		gutterWidth:20								
+	});	
+}
+
+$(document).ready(function(){ 
+	item_masonry();	
+	$('.projectItem').fadeIn();
+
+});
+</script>
+
+<div class="blank"></div>
+
+
+<div>
+	<div class="container projects-search">
+    	<div class="project-filter clear">
+        	<div class="clear">
+                <div class="filter-acts">
+                    <select id="c" class="select" style="display: none" name=c> 
+                        <option value="rec" selected>推荐项目</option> 
+                        <option value="new">最新项目</option> 
+                        <option value="classic">本周热门</option> 
+                        <option value="success">最近成功</option> 
+                        <option value="soon">即将成功</option>
+                        <option value="end">即将结束</option>
+                    </select>
+                    <script type="text/javascript" src="{$TMPL}/js/jQselect.js"></script>
+	                <SCRIPT type=text/javascript>
+	                    $(document).ready(function() {
+	                        $("#c").selectbox();
+	                    });
+	                </SCRIPT>
+                </div>
+                <div class="filter-tags">
+                	<a href="{url r="deals" p="id="}" {if $p_id eq $cate_item.id}class="curr"{/if} title="全部项目">全部项目</a>
+                    {foreach from=$cate_hot_list item=cate_item}
+	                <a href="{url r="deals" p="id=$cate_item.id"}" title="{$cate_item.name}">{$cate_item.name}</a>
+	                {/foreach}
+                </div>
+            </div>
+            <div class="filter-tags-others clear" style="display:block;">
+                <div class="filter-tags clear">
+                    {foreach from=$cate_list item=cate_item}
+					<a href="{url r="deals" p="id=$cate_item.id"}" {if $p_id eq $cate_item.id}class="curr"{/if} title="{$cate_item.name}">{$cate_item.name}</a>
+					{/foreach}
+                </div>
+            </div>
+        </div>
+        
+        
+      <div class="projects-filter-list clear infinite_scroll">
+            <div class="index-project-list clear">
+        	{include file="inc/deal_list_index.html"}
+        	</div>
+        
+            
+        </div>
+        
+        <div class="blank clear"></div>
+        <div id="pin_loading" rel="{url r="ajax#deals" p="r=$p_r&id=$p_id&loc=$p_loc&tag=$p_tag&k=$p_k&p=$current_page"}">正在努力加载</div>	
+        <div class="pages">{$pages}</div>
+        
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="{$TMPL}/js/deals_index.js"></script>
+
+{include file="inc/footer.html"} 

@@ -1,0 +1,367 @@
+/* CSS Document */
+
+.center-top {
+	background: #fff;
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.center-top .center-top-tools {
+	background: #eee;
+	border-radius: 5px;
+	padding: 3px;
+	font-size: 14px;
+}
+.center-top .center-top-tools span {
+	float: left;
+	line-height: 30px;
+	margin-left: 15px;
+}
+.center-top .center-top-tools a {
+	float: right;
+	display: block;
+	padding: 7px 8px;
+	background: #1e83af;
+	color: #fff;
+	border-radius: 3px;
+}
+.center-top .center-top-info {
+	padding: 20px;
+	color: #aeaeae;
+}
+.center-top .center-top-info a {
+	color: #1e83af;
+}
+.center-top .center-top-info ul {
+	list-style: none;
+}
+.center-top .center-top-info ul li {
+	float: left;
+	line-height: 20px;
+}
+.center-top .center-top-info ul .userPic {
+	margin-right: 15px;
+}
+.center-top .center-top-info ul .userPic img {
+	width: 125px;
+	height: 125px;
+}
+.center-top .center-top-info ul .userWay {
+	width: 250px;
+}
+.center-top .center-top-info ul .split {
+	width: 1px;
+	border-right: 1px solid #dcdcdc;
+	height: 125px;
+	margin-right: 40px;
+}
+.center-top .center-top-info ul .userDesc {
+	width: 500px;
+}
+.center-body {
+	border: 1px solid #dcdcdc;
+	border-radius: 5px;
+	background: #fff;
+	margin-bottom: 20px;
+}
+.center-body .center-tabs {
+}
+.center-body .center-tabs ul {
+	list-style: none;
+	width: 100%;
+	background: #dcdcdc;
+}
+.center-body .center-tabs ul li {
+	float: left;
+}
+.center-body .center-tabs ul li a {
+	display: block;
+	padding: 10px 25px;
+	font-size: 14px;
+	color: #8d8d8d;
+	border-top: 3px solid #dcdcdc;
+}
+.center-body .center-tabs ul li .curr {
+	background: #fff;
+	border-color: #1e83af;
+}
+.center-body .center-main {
+	padding: 20px;
+}
+/*
+	动态-项目
+**********************************/
+.dynamic-list {
+	list-style: none;
+	color: #949494;
+}
+.dynamic-list li {
+	border-bottom: 1px dashed #dcdcdc;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.dynamic-list li .project .dynamic-pic {
+	width: 250px;
+	float: left;
+}
+.dynamic-list li .project .dynamic-pic img {
+	width: 250px;
+	height: 186px;
+	overflow: hidden;
+}
+.dynamic-list li .project .dynamic-pic .dynamic-title-1 {
+	margin-top: 10px;
+}
+.dynamic-list li .project .dynamic-pic a {
+	font-size: 14px;
+	color: #1e83af;
+}
+.dynamic-list li .project .dynamic-info {
+	width: 686px;
+	float: left;
+	margin-left: 20px;
+}
+.dynamic-list li .project .dynamic-info .dynamic-title-2 {
+	margin-bottom: 20px;
+}
+.dynamic-list li .project .dynamic-info .dynamic-title-2 a {
+	font-size: 14px;
+	color: #1e83af;
+}
+.dynamic-list li .project .dynamic-info .dynamic-desc {
+	line-height: 20px;
+}
+.dynamic-list li .project .dynamic-info .dynamic-more {
+	margin-top: 20px;
+}
+.dynamic-list li .project .dynamic-info .dynamic-more a {
+	display: block;
+	padding: 5px 8px;
+	background: #1e83af;
+	color: #fff;
+	float: left;
+	border-radius: 3px;
+}
+/* 个人中心 - 回复
+**************************************************/
+.center-comment-main {
+	width: 760px;
+	margin: 0px auto;
+	margin-top: 20px;
+	background: #fafafa;
+	padding: 30px;
+	color: #969696;
+}
+.comment-list {
+	list-style: none;
+	width: 760px;
+}
+.comment-list li {
+	border-bottom: 1px dashed #dcdcdc;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.comment-list li .userPic {
+	width: 70px;
+	float: left;
+	margin-right: 15px;
+}
+.comment-list li .userPic img {
+	height: 70px;
+	width: 70px;
+}
+.comment-list li .userComment {
+	width: 650px;
+	float: left;
+}
+.comment-list li .userComment .comm-content {
+	line-height: 20px;
+}
+.comment-list li .userComment .comm-content a {
+	color: #1e83af;
+}
+.comment-list li .userComment .comm-tools {
+	text-align: right;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+.comment-list li .userComment .comm-tools a {
+	color: #1e83af;
+}
+.comment-list li .userComment .comm-re {
+	display: none;
+}
+.comment-list li .userComment .comm-re textarea {
+	border-color: #dcdcdc;
+	overflow: hidden;
+	width: 630px;
+	max-width: 660px;
+	height: 35px;
+	padding: 10px;
+	line-height: 18px;
+	border-radius: 3px;
+	margin-top: 5px;
+}
+.comment-list li .userComment .comm-re textarea:focus {
+	border-color: #1ba9d1;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+}
+.comment-list li .userComment .comm-re .submit {
+	display: block;
+	float: right;
+	padding: 5px 8px;
+	background: #1e83af;
+	color: #fff;
+	border-radius: 3px;
+	margin-bottom: 10px;
+}
+.comment-list li .userComment .comm-re-list {
+	background: #d9d9d9;
+	padding: 8px;
+}
+.comment-list li .userComment .comm-re-list ul {
+	list-style: none;
+	margin: 0px;
+}
+.comment-list li .userComment .comm-re-list ul li {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.comment-list li .userComment .comm-re-list ul li .comm-re-pic {
+	width: 40px;
+	float: left;
+	margin-right: 15px;
+}
+.comment-list li .userComment .comm-re-list ul li .comm-re-pic img {
+	height: 40px;
+	width: 40px;
+}
+.comment-list li .userComment .comm-re-list ul li .comm-re-content {
+	width: 570px;
+	float: left;
+}
+/* 个人中心 - 私信
+**************************************************/
+.center-letter-main {
+	width: 760px;
+	margin: 0px auto;
+	margin-top: 20px;
+	background: #fafafa;
+	padding: 30px;
+	color: #969696;
+}
+.letter-list {
+	list-style: none;
+	width: 760px;
+	font-size: 14px;
+}
+.letter-list a {
+	text-decoration: none;
+}
+.letter-list li {
+	border-bottom: 1px dashed #dcdcdc;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-right: 0px;
+}
+.letter-list li .userPic {
+	width: 70px;
+	float: left;
+	margin-right: 15px;
+}
+.letter-list li .userPic img {
+	height: 70px;
+	width: 70px;
+}
+.letter-list li .userPic .submit {
+	display: block;
+	padding: 5px 8px;
+	background: #1e83af;
+	color: #fff;
+	border-radius: 3px;
+	text-align: center;
+	margin-top: 5px;
+}
+.letter-list li .userComment {
+	width: 675px;
+	float: left;
+}
+.letter-list li .userComment .letter-author {
+	margin-bottom: 15px;
+}
+.letter-list li .userComment .letter-author a {
+	color: #1e83af;
+	text-decoration: none;
+}
+.letter-list li .userComment .letter-author .letter-way {
+	float: left;
+}
+.letter-list li .userComment .letter-author .letter-date {
+	float: right;
+	color: #ccc;
+}
+.letter-list li .userComment .letter-content {
+	line-height: 20px;
+	background: #e8e6e7;
+	padding: 10px;
+	border-radius: 3px;
+	min-height: 40px;
+}
+.letter-list li .userComment .letter-content-no {
+	background: #1e83af;
+	color: #fff;
+}
+.letter-list li .userComment .message_op {
+	margin-top: 5px;
+}
+.letter-list li .letter-re {
+	display: none;
+}
+.letter-list li .letter-re .re-input {
+	width: 675px;
+	float: left;
+	margin-top: 15px;
+}
+.letter-list li .letter-re .re-input textarea {
+	border-color: #dcdcdc;
+	overflow: hidden;
+	width: 653px;
+	max-width: 660px;
+	height: 35px;
+	padding: 10px;
+	line-height: 18px;
+	border-radius: 3px;
+	margin-top: 5px;
+}
+.letter-list li .letter-re .re-input textarea:focus {
+	border-color: #1ba9d1;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+}
+.letter-list li .letter-re .re-input a {
+	display: block;
+	padding: 5px 8px;
+	background: #1e83af;
+	color: #fff;
+	border-radius: 3px;
+	float: right;
+}
+.letter-session-title {
+	font-weight: 600;
+	line-height: 30px;
+	padding-left: 20px;
+}
+.letter-session-list {
+	list-style: none;
+}
+.letter-session-list li {
+	margin-bottom: 15px;
+}

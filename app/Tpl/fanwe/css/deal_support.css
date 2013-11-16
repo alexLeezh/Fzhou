@@ -1,0 +1,140 @@
+.support_item{ padding:10px 0px; border-bottom:solid 1px #ccc; }
+.support_avatar{ float:left; width:60px; height:60px; }
+.support_avatar img{ width:60px; height:60px;}
+.support_info{ float:left; width:450px; padding-left:10px;}
+.support_user_name{ font-size:14px; font-weight:bolder;}
+.support_loc{ color:#999;}
+
+
+
+.support-item{ width:565px; height:120px; overflow:hidden; float:left; margin-right:15px; margin-bottom:15px; border:1px solid #dcdcdc;}
+.support-item-last{ margin-right:0px;}
+.support-log-info{ padding:25px;height:120px; width:355px; float:left; font-size:14px;}
+.support-log-info a{color:#1e83af;}
+.support-img{ width:158px;height:120px; float:right; position:relative;overflow:hidden; }
+.support-img img{ border:none;}
+.support-img .button{ background:#1e83af; position:absolute; right:2px; bottom:2px; color:#fff; font-size:12px; padding:5px 8px; border-radius:3px;}
+
+/*--个人回复开始--*/
+.center-comment-main {
+	width: 760px;
+	margin: 0px auto;
+	margin-top: 20px;
+	background: #fafafa;
+	padding: 30px;
+	color: #969696;
+}
+.comment_form textarea {
+	min-width: 550px;
+	width: 550px;
+	max-width: 550px;
+	border: #dcdcdc solid 1px;
+	height: 80px;
+	padding: 5px;
+	color: #666;
+	font-size: 14px;
+	line-height: 18px;
+	border-radius: 3px;
+	min-height: 80px;
+	max-height: 80px;
+}
+.center-comment-main {
+	width: 760px;
+	margin: 0px auto;
+	margin-top: 20px;
+	background: #fafafa;
+	padding: 30px;
+	color: #969696;
+}
+.comment-list {
+	list-style: none;
+	width: 760px;
+}
+.comment-list li {
+	border-bottom: 1px dashed #dcdcdc;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.comment-list li .userPic {
+	width: 70px;
+	float: left;
+	margin-right: 15px;
+}
+.comment-list li .userPic img {
+	height: 70px;
+	width: 70px;
+}
+.comment-list li .userComment {
+	width: 650px;
+	float: left;
+}
+.comment-list li .userComment .comm-content {
+	line-height: 20px;
+}
+.comment-list li .userComment .comm-content a {
+	color: #1e83af;
+}
+.comment-list li .userComment .comm-tools {
+	text-align: right;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+.comment-list li .userComment .comm-tools a {
+	color: #1e83af;
+}
+.comment-list li .userComment .comm-re {
+	display: none;
+}
+.comment-list li .userComment .comm-re textarea {
+	border-color: #dcdcdc;
+	overflow: hidden;
+	width: 630px;
+	max-width: 660px;
+	height: 35px;
+	padding: 10px;
+	line-height: 18px;
+	border-radius: 3px;
+	margin-top: 5px;
+}
+.comment-list li .userComment .comm-re textarea:focus {
+	border-color: #1ba9d1;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+}
+.comment-list li .userComment .comm-re .submit {
+	display: block;
+	float: right;
+	padding: 5px 8px;
+	background: #1e83af;
+	color: #fff;
+	border-radius: 3px;
+	margin-bottom: 10px;
+}
+.comment-list li .userComment .comm-re-list {
+	background: #d9d9d9;
+	padding: 8px;
+}
+.comment-list li .userComment .comm-re-list ul {
+	list-style: none;
+	margin: 0px;
+}
+.comment-list li .userComment .comm-re-list ul li {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.comment-list li .userComment .comm-re-list ul li .comm-re-pic {
+	width: 40px;
+	float: left;
+	margin-right: 15px;
+}
+.comment-list li .userComment .comm-re-list ul li .comm-re-pic img {
+	height: 40px;
+	width: 40px;
+}
+.comment-list li .userComment .comm-re-list ul li .comm-re-content {
+	width: 570px;
+	float: left;
+}
+/*--个人回复结束--*/

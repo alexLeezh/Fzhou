@@ -1,0 +1,13 @@
+			<div  class="edit-tabs">
+               	<ul class="clear">
+	               	{if $user_info.ex_real_name eq '' and $user_info.ex_account_info eq '' and $user_info.ex_contact eq ''}
+					<li><a href="{url r="settings#bank"}">银行帐户</a></li>
+					{/if}
+                   	<li><a href="{url r="settings#password"}">安全设置</a></li>
+                    <li><a href="{url r="settings#bind"}">绑定社交网络</a></li>
+                    <li><a href="{url r="settings#consignee"}">配送地址</a></li>
+                    <li class="curr"><a href="{url r="settings#incharge"}">方舟账户</a></li>
+                    <li><a href="{url r="settings#index"}">基本资料</a></li>
+                    <li class="set">绑定社交网络</li>
+                </ul>
+            </div>

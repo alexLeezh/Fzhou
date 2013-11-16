@@ -1,0 +1,65 @@
+{foreach from=$deal_list item=deal_item key=key}
+	<div class="projectItem {if ($key + 1) mod 4 eq 0}lastProjectItem{/if} masonry_brick">
+		<p class="projectPic">
+	    	<a href="{url r="deal#show" p="id=$deal_item.id"}" title="{$deal_item.name}">
+			<img src="{if $deal_item.image eq ''}{$TMPL}/images/empty_thumb.gif{else}{function name="get_spec_image" v=$deal_item.image w="283" h="410" g="1"}{/if}" alt="{$deal_item.name}{$deal_item.id}" />
+			</a>
+	    </p>
+	    <div class="projectInfo">
+	        <p class="projectATitle">
+	            <a href="{url r="deal#show" p="id=$deal_item.id"}" title="{$deal_item.name}" class="deal_title">{function name="msubstr" v=$deal_item.name b=0 e=25}</a>
+	        </p>
+	        <p class="projectTags">
+	        	{foreach from=$deal_item.tags_arr item=tag}
+				{if trim($tag) neq ''}
+				<a href="{url r="deals" p="k=$tag"}" title="{$tag}">{$tag}</a>
+				{/if}
+				{/foreach}
+	        </p>
+	        <p class="projectDesc">{function name="msubstr" v=$deal_item.brief b=0 e=50}</p>
+	    </div>
+	    <div class="projectStatus">
+	    	<div class="projectProgreeNo">
+	            <span class="fl">已筹得{function name="round" v=$deal_item.support_amount e=2}元</span> 
+	            <span class="fr">
+	     			{if $deal_item.begin_time > $now}
+					<span class="num">未上线</span>
+					<span class="til">剩余时间</span>
+					{elseif $deal_item.end_time < $now and $deal_item.end_time neq 0}
+					<span class="num">已过期</span>
+					<span class="til">剩余时间</span>
+					{else}
+					<span class="num">
+						{if $deal_item.end_time eq 0}
+						长期项目
+						{else}
+						<font>{$deal_item.remain_days}</font>天
+						{/if}
+					</span>
+					<span class="til">剩余时间</span>
+					{/if}       
+	            </span>
+	        </div>
+	    	<div class="cc-progress_container">
+	            <div class="cc-progress_bar"  style="width:{if $deal_item.percent <= 12}26px{elseif $deal_item.percent>=100}100%{else}{$deal_item.percent}%{/if};" title="{$deal_item.percent}%">
+	            	<span class="cc-projress_scroll fr">{$deal_item.percent}%</span>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+{/foreach}
+
+
+<script type="text/javascript">
+          $(document).ready(function(){ 
+              /*$('.cc-progress_bar').each(function(index, element) {
+                  var percent = $(this).attr('title');
+                  var _l=percent.substr(0,percent.indexOf("%"));
+                  if(!isNaN(_l)&&parseInt(_l)<=12) $(this).animate({width:26},1000);
+else if(!isNaN(_l)&&parseInt(_l)>=100) $(this).animate({width:'100%'},1000);
+                  else $(this).animate({width:percent},1000);
+              });*/
+              
+			  
+          });
+</script>

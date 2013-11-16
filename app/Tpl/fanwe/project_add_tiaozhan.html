@@ -1,0 +1,263 @@
+{include file="inc/header.html"} 
+<script type="text/javascript">
+	var ROOT = '{$APP_ROOT}/keupload.php';
+</script>
+<?php
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/deal_publish.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/deal_publish.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/upload_deal_image.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/upload_deal_image.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/ajaxupload.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/switch_city.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/switch_city.js";
+$this->_var['dpagejs'][] = APP_ROOT_PATH."/system/region.js";
+$this->_var['dcpagejs'][] = APP_ROOT_PATH."/system/region.js";
+?>
+<script type="text/javascript" src='{function name="parse_script" v="$dpagejs" c="$dcpagejs"}'></script>
+<script type='text/javascript' src='{$APP_ROOT}/admin/public/kindeditor/kindeditor.js'></script>
+<link rel="stylesheet" type="text/css" href="{$TMPL}/css/pulish.css" />
+<style>
+
+.white_box{background:none repeat scroll 0 0 #F9F9F9;border:none;}
+.my_label{width:330px;height:35px;background-color:#1AA9D1;border-radius:3px;line-height:35px;color:#ffffff;font-size:14px;text-align:center;}
+.my_form_row{border:1px solid #DCDCDC;border-radius:2px;width:290px;margin-top:10px;background:none repeat scroll 0 0 #ffffff;padding:0px 20px;margin-bottom:15px;}
+.my_title{ width:130px;font-weight:bold;color:#676767;text-align:left;}
+
+
+.ke_form{border:none;}
+.ke-container{background-color:#ffffff;}
+.ke-toolbar-outer{background:none repeat scroll 0 0 #FFFFFF;height:40px;border:1px solid #1AA9D1;border-radius:2px;}
+.ke-textarea-table{margin-top:10px;}
+.ke-textarea-table td{border:1px solid #1AA9D1;border-radius:2px;margin-top:15px;}
+.public_left .form_row .textbox{border:1px solid #1AA9D1;border-radius:2px;width:273px;background:none repeat scroll 0 0 #ffffff}
+
+</style>
+<script>
+jQuery(function($){
+
+	$('#next_two_project_form').submit(function(){
+	
+	
+		var ajaxurl = $(this).attr("action");
+		var query = $(this).serialize();
+		//query+="&description="+ encodeURIComponent(KE.util.getData("descript"));
+		$.ajax({ 
+				url: ajaxurl,
+				dataType: "json",
+				data:query,
+				type: "POST",
+				success: function(ajaxobj){
+					if(ajaxobj.status==1)
+					{
+						if(ajaxobj.info!="")
+						{
+							$("input[name='id']").val(ajaxobj.info);
+							$.showSuccess("保存成功",function(){
+								if(ajaxobj.jump!="")
+								{
+									location.href = ajaxobj.jump;
+								}
+							});	
+						}
+						else
+						{
+							if(ajaxobj.jump!="")
+							{
+								location.href = ajaxobj.jump;
+							}
+						}
+					}
+					else
+					{
+						if(ajaxobj.info!="")
+						{
+							$.showErr(ajaxobj.info,function(){
+								if(ajaxobj.jump!="")
+								{
+									location.href = ajaxobj.jump;
+								}
+							});	
+						}
+						else
+						{
+							if(ajaxobj.jump!="")
+							{
+								location.href = ajaxobj.jump;
+							}
+						}							
+					}
+				},
+				error:function(ajaxobj)
+				{
+					if(ajaxobj.responseText!='')
+					alert(ajaxobj.responseText);
+				}
+			});
+			return false;
+	
+	});
+
+	$("#savenow").bind("click",function(){
+		$("input[name='savenext']").val("0");
+		$("#next_two_project_form").submit();
+	});
+	$("#savenext").bind("click",function(){
+		$("input[name='savenext']").val("1");
+		$("#next_two_project_form").submit();
+	});
+
+})
+</script>
+<div class="blank"></div>
+
+<div class="shadow_bg">
+	<div class="wrap white_box" >
+
+			<div class="blank"></div>
+			<div class="pulish_project_navs">
+				<ul>
+					<li>简易发布</li>
+					<li>详细介绍</li>
+					<li>项目执行</li>
+					<li class="current">问题与挑战</li>					
+				</ul>
+			</div>
+			<div class="blank"></div>
+			
+			<div class="deal-publish-left">
+				<div class="my_label">在发布项目前请完善您的个人资料</div>
+				<form id="next_two_project_form" action="{url r="project#savetiaozhan"}" method="post">									
+
+				<div class="form_row my_form_row">
+					<label class="title w100 my_title" style="height:50px;line-height:50px;width:280px;">风险声明</label>
+					<div class="clearfix"></div>
+					<div class="form_row">
+						<div class="ke_form">
+						{function name="show_ke_form" text_name="fengxian" width="290" height="300" ctn=""}		
+						</div>
+						<div class="blank15"></div>
+					</div>
+					<div class="blank15"></div>
+				</div>
+
+				<div class="form_row my_form_row">
+					<label class="title w100 my_title" style="height:50px;line-height:50px;width:280px;">挑战</label>
+					<div class="clearfix"></div>
+					<div class="form_row">
+						<div class="ke_form">
+						{function name="show_ke_form" text_name="tiaozhan" width="290" height="300" ctn=""}		
+						</div>
+						<div class="blank15"></div>
+					</div>
+					<div class="blank15"></div>
+				</div>		
+
+				<div class="submit_btn_row">
+					<input type="hidden" name="image" value="{$deal_image.url}" />
+					<input type="hidden" name="savenext" value="0" />
+					<div class="ui-button gray" rel="gray" id="savenow">
+						<div>
+							<span>先保存一下</span>
+						</div>
+					</div>
+					<div class="ui-button green" rel="green" id="savenext" style="margin-left:5px;">
+						<div>
+							<span>完成</span>
+						</div>
+					</div>
+					<input type="hidden" value="1" name="ajax" />
+					<input type="hidden" name="id" value="{$deal.id}" />
+					<div class="blank15"></div>
+				</div>
+				
+			</form>
+				
+			</div>
+			
+			<div class="deal-publish-right">
+				<div class="deal-other">
+					<div class="deal-other-tabs clear">
+						<ul class="deal-desc-tabs clear">
+							<li class="curr">
+								<a href="javascript:;" title="项目详情" ref="project_detial">项目详情</a>
+							</li>
+							<li>
+								<a href="javascript:;" title="风险声明OR问答" ref="project_question">风险声明OR问答</a>
+							</li>
+							<li>
+								<a href="javascript:;" title="支持者" ref="project_zhichizhe">支持者</a>
+							</li>
+							<li>
+								<a href="javascript:;" title="评论" ref="project_pinglun">评论</a>
+							</li>
+						</ul>
+						<div class="deal-tabs-press">
+							<div class="">
+								<span class="support_amount">已筹得0元</span>
+								<span class="remain_days">剩余<font id="deal_days">0</font>天</span>
+							</div>
+							<div class="project-progress-container">
+			                    <div class="progress-bar fl" title="0%">
+			                    </div>
+			                </div>
+						</div>
+						
+					</div>
+					<div class="deal-bottom">
+						<div id="project_detial" class="deal-show-item clear" style="display:block;">
+							<div class="deal-detial-desc"><span>项目详情<span></div>
+							<div class="deal-detial-other">
+								<p class="detial-title">为什么要这么做</p>
+								<p class="detial-desc" id="deal_xmdo"></p>
+								<p class="detial-title">若干亮点</p>
+								<p class="detial-desc" id="deal_xmld"></p>
+								<p class="detial-title">执行计划</p>
+								<p class="detial-desc" ></p>
+								<p class="detial-title">我和我的团队优势</p>
+								<p class="detial-desc"></p>
+								<p class="detial-title">风险声明</p>
+								<p class="detial-desc"></p>
+								<p class="detial-title">挑战</p>
+								<p class="detial-desc"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 
+				<div class="deal_preview_title">编辑预览</div>
+				<div class="blank"></div>
+				<div class="deal_item_box">
+					<div class="deal_content_box">
+					<img id="image" src="{if $deal_image.thumb_url eq ''}{$TMPL}/images/empty_thumb.gif{else}{$deal_image.thumb_url}{/if}" />
+					<div class="blank"></div>
+					<a href="#" class="deal_title" id="deal_title">项目的名称</a>
+					<div class="blank"></div>
+					{$user_info.user_name}&nbsp;&nbsp;(<span id="province">省份</span><span id="city">城市</span>)
+					<div class="blank"></div>
+					<div id="deal_brief">简要说明</div>
+					</div>
+					<div class="deal_item_dash"></div>
+					<div class="deal_content_box">
+						<div class="ui-progress">
+							<span style="width:100%;"></span>
+						</div>
+						<div class="blank"></div>
+						<div class="div3"><span class="num">100%</span><span class="til">达到</span></div>
+						<div class="div3"><span class="num" ><font id="price">0</font>元</span><span class="til">金额</span></div>
+						<div class="div3"><span class="num"><font id="deal_days">0</font>天</span><span class="til">剩余时间</span></div>
+						<div class="blank1"></div>
+					</div>
+				</div>
+				-->
+				
+				
+			</div>
+			<div class="blank"></div>
+			
+	
+	</div>
+</div>
+<div class="blank"></div>
+{include file="inc/footer.html"} 
+
+

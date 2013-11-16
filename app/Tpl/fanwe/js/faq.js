@@ -1,0 +1,29 @@
+$(document).ready(function(){
+	bind_faq_event();
+});
+function bind_faq_event()
+{
+	$(".faq_question").click(function(){
+		if($("#answer_"+$(this).attr("rel")).css("display")=="none"){
+			$("#answer_"+$(this).attr("rel")).slideDown();
+			$(this).attr("class","faq_question_c");
+			$("#menu_"+$(this).attr("rel")).attr("class","faq_question1_c");
+		}else{
+			$("#answer_"+$(this).attr("rel")).slideUp();
+			$(this).attr("class","faq_question");
+			$("#menu_"+$(this).attr("rel")).attr("class","faq_question");
+		}
+	});
+	$(".faq_question1").bind("click",function(){
+		if($("#answer_"+$(this).attr("rel")).css("display")=="none"){
+			$("#answer_"+$(this).attr("rel")).slideDown();
+			$(this).attr("class","faq_question1_c");
+			$("#question_"+$(this).attr("rel")).attr("class","faq_question_c");
+		}else{
+			$("#answer_"+$(this).attr("rel")).slideUp();
+			$(this).attr("class","faq_question1");
+			$("#question_"+$(this).attr("rel")).attr("class","faq_question");
+		}
+		
+	});
+}

@@ -1,0 +1,44 @@
+<div class="user_info_row">
+	<div class="wrap white_box clear">
+		<div class="home_user_box">
+			<div class="home_user_box_tabs">
+				<ul class="clear">
+					<li class="home_user_login_name">{$home_user_info.user_name}的个人方舟</li>
+					<li class="home_user_sixin">
+						<a class="ui-button green" rel="green" onclick="send_message({$home_user_info.id});">
+							<div>
+								<span>私信ta</span>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="blank1"></div>
+			<div class="blank1"></div>
+			<div>
+				<ul class="home_user_info clear">
+		           	<li class="userPic">{function name="show_avatar" p="$home_user_info.id" t="big"}</li>
+		            <li class="userWay">
+		            	<div class="home_user_name">{$home_user_info.user_name}</div>
+						
+						<div class="home_user_join">
+							{function name="to_date" v=$home_user_info.create_time f="Y年m月d日"} 加入 {function name="app_conf" v="SITE_NAME"}
+						</div>
+						{foreach from=$home_user_info.weibo_list item=weibo_item}
+						<p>博客或微博: <a href="{$weibo_item.weibo_url}" target="_blank" class="linkgreen">{$weibo_item.weibo_url}</a></p>
+						{/foreach}
+		                
+		            </li>
+		            <li class="split">&nbsp;</li>
+		            <li class="userDesc">
+			            {if $home_user_info.intro neq ''}
+						<div class="home_user_desc">
+							{$home_user_info.intro}
+						</div>
+						{/if}
+					</li>
+		        </ul>
+			</div>
+		</div>
+	</div>
+</div>

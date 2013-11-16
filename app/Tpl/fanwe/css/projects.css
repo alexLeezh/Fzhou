@@ -1,0 +1,63 @@
+/* CSS Document */
+.projects-search{ margin-top:20px;}
+.projects-filter-list{
+	margin-top:20px;
+	margin-bottom:20px;}
+	
+
+.project-s-1{}
+.project-s-1 ul{ list-style:none;}
+.project-s-1 ul li{ float:left; width:590px; margin-right:20px; margin-bottom:20px;}
+.project-s-1 ul .last{ margin-right:0px;}
+.project-s-1 ul li .project-item{border:1px solid #f2f2f0; height:280px; border-radius:5px; position:relative; background:#fff; padding:20px;}
+.project-s-1 ul li .project-item .project-title{ margin-bottom:10px;}
+.project-s-1 ul li .project-item .project-title a{ font-size:14px; color:#1e83af;}
+.project-s-1 ul li .project-item .project-pic{}
+.project-s-1 ul li .project-item .project-pic a{ display:block; float:right; vertical-align:top; zoom:1; margin-left:15px; width:166px; height:166px; overflow:hidden;}
+.project-s-1 ul li .project-item .project-tags{width:360px; float:left;}
+.project-s-1 ul li .project-item .project-tags a{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block; margin-bottom:3px; float:left; padding:2px 5px; background:#1e83af; border-radius:3px; color:#fff;margin-right:3px;}
+
+.project-s-1 ul li .project-item .project-tags .project-author{ background-color:#fff; color:#808080;}
+.project-s-1 ul li .project-item .project-tags .project-desc{ color:#939393; line-height:20px; margin-top:5px; }
+.project-s-1 ul li .project-item .project-status{position:absolute; left:0px; color:#1e83af; height:50px; bottom:0px;padding:20px;}
+
+.project-status .project-progress-container{width:545px;height:26px;overflow:hidden;background:url(../images/progress_container2.png) 0px 6px no-repeat;  }
+.project-status .project-progress-container .progress-bar{height:9px;width:0px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;background:#1e83af 10px; text-align:left; margin-top:8px; font-size:11px;position:relative;}
+.project-status .project-progress-container .progress-bar .projress-scroll{ width:26px; height:26px; line-hight:18px; overflow:hidden; text-align:center;background:url(../images/progress_no.png) no-repeat; _background: none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='corp', src='../images/progress_no.png');position:absolute; top:-8px; right:0px; padding-top:5px; padding-left:0px; font-size:10px;}
+.project-status .project-no{}
+.project-status .project-no .fl{display:block; padding:3px 5px ; border:1px solid #f2f2f0; border-radius:3px; background:#fefefc;}
+.project-status .project-no .fr{display:block; padding:3px 5px ; border-radius:3px; background:#1e83af; color:#fff;}
+
+
+.project-s-2{}
+.project-s-2 ul{ list-style:none;}
+.project-s-2 ul li{ margin-bottom:20px;}
+.project-s-2 ul li .project-item{border:1px solid #f2f2f0; height:200px; border-radius:5px; position:relative; background:#fff; padding:20px;}
+.project-s-2 ul li .project-item .project-title{ margin-bottom:10px;}
+.project-s-2 ul li .project-item .project-title a{ font-size:16px; color:#1e83af;}
+.project-s-2 ul li .project-item .project-pic{}
+.project-s-2 ul li .project-item .project-pic a{ display:block; float:left; vertical-align:top; zoom:1; margin-right:15px; width:166px; height:166px; overflow:hidden;}
+.project-s-2 ul li .project-item .project-tags{width:550px; float:left; }
+.project-s-2 ul li .project-item .project-tags a{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;  display:block; margin-bottom:3px;float:left; padding:2px 5px; background:#1e83af; border-radius:3px; color:#fff; margin-right:3px; margin-bottom:5px;}
+
+.project-s-2 ul li .project-item .project-tags .project-author{ background-color:#fff; color:#808080;}
+.project-s-2 ul li .project-item .project-tags .project-desc{ color:#939393; line-height:20px;margin-top:5px;}
+.project-s-2 ul li .project-item .project-status{ position:absolute; left:185px; color:#1e83af; height:26px; bottom:25px;padding:20px;width:550px;}
+
+
+
+.public_left{width:330px;}
+.public_left .form_row .textbox{ background:#fafafa; padding:7px; color:#8C8C8C; border:#f2f2f0 solid 1px; height:16px; width:202px; float:left; font-size:14px;  }
+.public_left .form_row .textarea{ background:#fafafa; padding:7px; color:#8c8c8c; border:#f2f2f0 solid 1px; width:202px; font-size:14px; float:left; height:100px;  min-height:100px; max-height:100px; min-width:202px; max-width:202px;}
+.border_form_row{border:1px solid #DCDCDC;border-radius:2px;width:330px;margin-top:10px;background:none repeat scroll 0 0 #ffffff;}
+.border_form_row .form_title_p{ font-size:16px; font-weight:600;}
+
+
+
+
+
+
+
+	
+
+

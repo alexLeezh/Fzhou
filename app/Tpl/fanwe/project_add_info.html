@@ -1,0 +1,582 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="Generator" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{if $page_title neq ''}{$page_title} - {/if}{$site_name} - {$seo_title}</title>
+<meta name="keywords" content="{$seo_keyword}" />
+<meta name="description" content="{$seo_description}" />
+<?php
+$this->_var['pagecss'][] = $this->_var['TMPL_REAL']."/css/style.css";
+$this->_var['pagecss'][] = $this->_var['TMPL_REAL']."/css/site.css";
+$this->_var['pagecss'][] = $this->_var['TMPL_REAL']."/css/weebox.css";
+$this->_var['pagejs'][] = $this->_var['TMPL_REAL']."/js/jquery-1.8.2.min.js";
+$this->_var['pagejs'][] = $this->_var['TMPL_REAL']."/js/jquery.bgiframe.js";
+$this->_var['pagejs'][] = $this->_var['TMPL_REAL']."/js/jquery.weebox.js";
+$this->_var['pagejs'][] = $this->_var['TMPL_REAL']."/js/jquery.pngfix.js";
+$this->_var['pagejs'][] = $this->_var['TMPL_REAL']."/js/lazyload.js";
+$this->_var['pagejs'][] = $this->_var['TMPL_REAL']."/js/script.js";
+$this->_var['pagejs'][] = $this->_var['TMPL_REAL']."/js/backtop.js";
+$this->_var['cpagejs'][] = $this->_var['TMPL_REAL']."/js/script.js";
+
+if(app_conf("APP_MSG_SENDER_OPEN")==1)
+{
+$this->_var['pagejs'][] = $this->_var['TMPL_REAL']."/js/msg_sender.js";
+$this->_var['cpagejs'][] = $this->_var['TMPL_REAL']."/js/msg_sender.js";
+}
+if(HAS_DEAL_NOTIFY>0)
+{
+$this->_var['notifypagejs'][] = $this->_var['TMPL_REAL']."/js/notify_sender.js";
+$this->_var['cnotifypagejs'][] = $this->_var['TMPL_REAL']."/js/notify_sender.js";	
+}
+?>
+<link rel="stylesheet" type="text/css" href="{function name="parse_css" v="$pagecss"}" />
+<script type="text/javascript">
+var APP_ROOT = '{$APP_ROOT}';
+var LOADER_IMG = '{$TMPL}/images/lazy_loading.gif';
+var ERROR_IMG = '{$TMPL}/images/image_err.gif';
+{if app_conf("APP_MSG_SENDER_OPEN") eq 1}
+var send_span = {function name="app_conf" v="SEND_SPAN"}000;
+{/if}
+</script>
+<script type="text/javascript" src="{function name="parse_script" v="$pagejs" c="$cpagejs"}"></script>
+{if HAS_DEAL_NOTIFY>0}
+<script type="text/javascript" src="{function name="parse_script" v="$notifypagejs" c="$cnotifypagejs"}"></script>
+{/if}
+<style>
+.deal-input-box{ border:5px dashed red;}
+</style>
+<script type="text/javascript" src="{$TMPL}/js/project_input_tip.js"></script>
+</head>
+<body>
+<div class="pulish_header">
+  <div class="wrap clear">
+    <div class="logo f_l"> <a class="link" href="{$APP_ROOT}/" target="_blank">
+      <?php
+					$this->_var['logo_image'] = app_conf("SITE_LOGO");
+				?>
+      {function name="load_page_png" v=$logo_image} </a> </div>
+    <div class="f_r"></div>
+    <div class="pulish_project_header">
+      <ul>
+        <li><a href="{url r="project#edit" p="id=$deal.id"}">简易发布</a></li>
+		<li><a href="{url r="project#add_explain" p="id=$deal.id"}">项目介绍</a></li>
+		<li><a href="{url r="project#zhixing" p="id=$deal.id"}">执行计划</a></li>
+      </ul>
+    </div>
+    <div class="f_r"> <a href="{url r="project#add"}" class="add_project_header f_r"></a> 
+      <!--<div class="login_tip f_r">
+				{insert name="login_tip"}
+			</div>--> 
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	var ROOT = '{$APP_ROOT}/keupload.php';
+</script>
+<?php
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/upload_deal_image.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/upload_deal_image.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/ajaxupload.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/switch_city.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/switch_city.js";
+$this->_var['dpagejs'][] = APP_ROOT_PATH."/system/region.js";
+$this->_var['dcpagejs'][] = APP_ROOT_PATH."/system/region.js";
+?>
+<style>
+
+</style>
+<script type="text/javascript" src="{function name="parse_script" v="$dpagejs" c="$dcpagejs"}"></script>
+<link rel="stylesheet" type="text/css" href="{$TMPL}/css/projects.css" />
+<link rel="stylesheet" type="text/css" href="{$TMPL}/css/pulish.css" />
+
+
+<div class="blank"></div>
+<script>
+jQuery(function($){
+	$('#xmname').focus(function(){
+		var focusV = $('#xmname').val();
+		if(focusV == "DreamerHouse梦中家一起来打造我们的世外桃源吧")
+		{
+			$('#xmname').val("");
+		}		
+	}).blur(function(){
+		var blurV = $('#xmname').val();
+		if(blurV == "")
+		{
+			$('#xmname').val("DreamerHouse梦中家一起来打造我们的世外桃源吧");
+		}		
+	});
+})
+
+
+$(document).ready(function(){
+	bind_cate_select();
+	bind_project_form();
+	bind_faq_func();
+});
+
+function bind_faq_event()
+{
+	$("input[name='question[]']").bind("click focus",function(){
+		if($.trim($(this).val())=="请输入问题")
+			$(this).val("");
+	});
+	$("input[name='question[]']").bind("blur",function(){
+		if($.trim($(this).val())=="请输入问题"||$.trim($(this).val())=="")
+			$(this).val("请输入问题");
+	});
+	
+	$("textarea[name='answer[]']").bind("click focus",function(){
+		if($.trim($(this).val())=="请输入答案")
+			$(this).val("");
+	});
+	$("textarea[name='answer[]']").bind("blur",function(){
+		if($.trim($(this).val())=="请输入答案"||$.trim($(this).val())=="")
+			$(this).val("请输入答案");
+	});
+}
+
+function bind_faq_func()
+{
+	bind_faq_event();
+	$("#add_faq").bind("click",function(){
+		var ajaxurl = APP_ROOT+"/index.php?ctl=ajax&act=add_deal_faq";
+		$.ajax({ 
+			url: ajaxurl,
+			type: "POST",
+			success: function(html){
+				$("#faq_list").append(html);
+				bind_faq_event();
+			},
+			error:function(ajaxobj)
+			{
+				if(ajaxobj.responseText!='')
+				alert(ajaxobj.responseText);
+			}
+		});
+	});
+}
+
+function del_faq(o)
+{
+	if($(".faq_item").length>1)
+	$(o).parent().parent().remove();
+}
+
+function bind_cate_select()
+{
+	$(".cate_list").find("span").bind("click",function(){
+		$(".cate_list").find("span").removeClass("current");
+		$(this).addClass("current");
+		$("input[name='cate_id']").val($(this).attr("rel"));
+	});
+}
+
+function bind_project_form()
+{
+	if($("#project_form").find(".cate_list span.current").length>0)
+	{
+		$("#project_form").find("input[name='cate_id']").val($("#project_form").find(".cate_list span.current").attr("rel"));
+	}	
+	else
+	{
+		$("#project_form").find("input[name='cate_id']").val('');
+	}
+	
+	$("input[name='name']").bind("keyup blur",function(){
+		if($(this).val().length>250)
+		{
+			$(this).val($(this).val().substr(0,250));
+			return false;
+		}
+		else
+		$("#deal_title").html($(this).val());
+	});
+	
+	$("textarea[name='brief']").bind("keyup blur",function(){
+		if($(this).val().length>300)
+		{
+			$(this).val($(this).val().substr(0,300));
+			return false;
+		}
+		else
+		$("#deal_brief").html($(this).val());
+	});
+	
+	
+	$("input[name='limit_price']").bind("keyup blur",function(){
+		if($.trim($(this).val())==''||isNaN($(this).val())||parseFloat($(this).val())<=0)
+		{
+			$(this).val("");
+		}
+		else if($(this).val().length>7)
+		{
+			$(this).val($(this).val().substr(0,7));
+			$("#price").html($(this).val().substr(0,7));
+		}
+		else
+		$("#price").html($(this).val());
+	});
+	$("input[name='deal_days']").bind("keyup blur",function(){
+		if($.trim($(this).val())==''||isNaN($(this).val())||parseInt($(this).val())<=0)
+		{
+			$(this).val("");
+		}
+		else if($(this).val().length>2)
+		{
+			$(this).val($(this).val().substr(0,2));
+			$("#deal_days").html($(this).val().substr(0,2));
+		}
+		else
+		$("#deal_days").html($(this).val());
+	});
+	
+	$("input[name='deal_days']").bind("keyup blur",function(){
+		if($.trim($(this).val())==''||isNaN($(this).val())||parseInt($(this).val())<=0)
+		{
+			$(this).val("");
+		}
+		else if($(this).val().length>2)
+		{
+			$(this).val($(this).val().substr(0,2));
+			$("#deal_days").html($(this).val().substr(0,2));
+		}
+		else
+		$("#deal_days").html($(this).val());
+	});
+
+	$("#project_form").bind("submit",function(){
+		
+		
+		
+		if($.trim($(this).find("input[name='name']").val())==''||$.trim($(this).find("input[name='name']").val())=='DreamerHouse梦中家一起来打造我们的世外桃源吧')
+		{
+			$.showErr("请填写项目名称");
+			return false;
+		}
+		if($(this).find("input[name='name']").val().length>125)
+		{
+			$.showErr("项目名称不超过125个字");
+			return false;
+		}
+		
+		if($(this).find("input[name='cate_id']").val()==''||$(this).find("input[name='cate_id']").val()==0)
+		{
+			$.showErr("请选择项目分类");
+			return false;
+		}
+		
+		if($.trim($(this).find("input[name='image']").val())=='')
+		{
+			$.showErr("上传封面图片");
+			return false;
+		}
+		if($.trim($(this).find("input[name='limit_price']").val())=='')
+		{
+			$.showErr("请输入目标金额");
+			return false;
+		}
+		if(isNaN($(this).find("input[name='limit_price']").val())||parseFloat($(this).find("input[name='limit_price']").val())<=0)
+		{
+			$.showErr("请输入正确的目标金额");
+			return false;
+		}
+		if($.trim($(this).find("input[name='deal_days']").val())=='')
+		{
+			$.showErr("请输入上线天数");
+			return false;
+		}
+		if(isNaN($(this).find("input[name='deal_days']").val())||parseInt($(this).find("input[name='limit_price']").val())<=0)
+		{
+			$.showErr("请输入正确的上线天数");
+			return false;
+		}
+		
+		var ajaxurl = $(this).attr("action");
+		var query = $(this).serialize();
+		//query+="&description="+ encodeURIComponent(KE.util.getData("descript"));
+		$.ajax({ 
+				url: ajaxurl,
+				dataType: "json",
+				data:query,
+				type: "POST",
+				success: function(ajaxobj){
+					
+					if(ajaxobj.status==1)
+					{
+						if(ajaxobj.info!="")
+						{
+							$("input[name='id']").val(ajaxobj.info);
+							$.showSuccess("保存成功",function(){
+								if(ajaxobj.jump!="")
+								{
+									location.href = ajaxobj.jump;
+								}
+							});	
+						}
+						else
+						{
+							if(ajaxobj.jump!="")
+							{
+								location.href = ajaxobj.jump;
+							}
+						}
+					}
+					else
+					{
+						if(ajaxobj.info!="")
+						{
+							$.showErr(ajaxobj.info,function(){
+								if(ajaxobj.jump!="")
+								{
+									location.href = ajaxobj.jump;
+								}
+							});	
+						}
+						else
+						{
+							if(ajaxobj.jump!="")
+							{
+								location.href = ajaxobj.jump;
+							}
+						}							
+					}
+				},
+				error:function(ajaxobj)
+				{
+					alert(ajaxurl);
+					if(ajaxobj.responseText!='')
+					alert(ajaxobj.responseText);
+				}
+			});
+			return false;
+		});
+		
+	
+	
+	$("#savenow").bind("click",function(){
+		$("input[name='savenext']").val("0");
+		$("#project_form").submit();
+	});
+	$("#savenext").bind("click",function(){
+		$("input[name='savenext']").val("1");
+		$("#project_form").submit();
+	});
+}
+
+</script>
+
+
+<div class="">
+  <div class="wrap">
+    <div class="blank"></div>
+    <div class="deal-publish-left">
+      <form id="project_form" action="{url r="project#saveInfo"}" method="post">
+        <div class="form_row my_form_row" style="height:85px;padding-top:10px;">
+          <label class="title w100 my_title">项目名称</label>
+          <input type="text" id="xmname" class="textbox" name="name" value="{if $deal.name eq ''}DreamerHouse梦中家一起来打造我们的世外桃源吧{else}{$deal.name}{/if}" style="font-size:12px;margin-left:12px"/>
+          <div class="blank1"></div>
+          <div class="form_tip"></div>
+          <div class="blank15"></div>
+        </div>
+        <div class="form_row my_form_row" style=" height:auto;padding-top:10px;float:none;" >
+          <label class="title w100 my_title">筹款金额及天数</label>
+          <div class="blank"></div>
+          <div class="form_tip" style="*margin-top:-10px; display:none;" id="tip3">
+            <p>与回报金额一样，筹款总额也是没办法计算的，这里需要考虑的要素有:</p>
+            <p>1、 您之前做过的项目预算。您打算全部筹集还是只筹一部分？</p>
+            <p>2、 您的人脉。支持者的来源多种多样，但是第一批也是最重要的支持者来自于您的家人和朋友，或者您微博上的粉丝。如果您的项目足够好，回报足够吸引人，那么传播也会很快，越来越多的陌生人会来支持您的项目。</p>
+            <p>3、 平衡点。您如果设置一个很低的目标，那么筹款会很容易成功，但是您会发现这点钱根本不足以执行项目；如果设置很高的目标，那么一旦失败，那么已有的支持会退还给支持者。所以，请寻找这样一个平衡点，既能保证项目执行，又不至于太难成功。不过，您不需要过分担心资金不足的问题，因为即使筹款成功，在规定期限内支持者还是可以做出支持的。也就是说，一旦项目成功，筹款金额总是比目标要高的。</p>
+          </div>
+          <div class="blank15"></div>
+          <div class="my_cla ex_my_cla" style="float:none; width:320px; margin-left:20px;">
+            <label class="title w100 ex_my_title cc-tip-control"  ref="tip3" style="color:#676767;">目标总金额:</label>
+            <input type="text" value="{$deal.limit_price}" ref="tip3" class="textbox input_tip_control input-tip-control" name="limit_price" style="width:220px; margin-left:-10px;" />
+            <label class="tip_box my_tip_box" style="top:10px; right:-30px;">元</label>
+          </div>
+          <div class="clear"></div>
+          <div class="blank"></div>
+          <div class="form_tip" style="*margin-top:-20px; display:none;" id="tip4">
+            <p>筹款期限与您的项目计划有关，与您的具体情况有关，所以方舟不限制具体的筹款期限（待定）。但是建议您不要将筹款时间设置的太长，因为并不是时间越长，筹集的资金就越多。请尽量将筹款期限设置在30天以内，如果您的项目很吸引人，短时间的筹款可能更能激发潜在支持的心理。</p>
+          </div>
+          <div class="blank"></div>
+          <div class="my_cla ex_my_cla" style="float:none; width:320px; margin-left:20px;">
+            <label class="title w100 ex_my_title cc-tip-control"  ref="tip4" style="letter-spacing:3px; color:#676767;">筹款期限:</label>
+            <input type="text" value="{$deal.deal_days}" class="textbox input-tip-control" ref="tip4" name="deal_days" style="width:220px; margin-left: -10px;" />
+            <label class="tip_box my_tip_box" style="top:10px; right:-35px;">天</label>
+          </div>
+          <div class="blank"></div>
+          <div class="my_cla ex_my_cla">
+            <label class="title w100 ex_my_title">&nbsp;</label>
+          </div>
+          <div class="blank15"></div>
+        </div>
+        <div class="form_row my_form_row" style="width:400px;">
+          <div class="blank"></div>
+          <label class="title w100 my_title" >为项目定位标签</label>
+          <div class="blank15"></div>
+          <div class="f_l cate_list" style="width:380px; margin-left:15px;"> 
+          		{foreach from=$cate_list item="cate_item" key=key}
+				<span rel="{$cate_item.id}" {if $cate_item.id eq $deal.cate_id}class="current"{/if}>{$cate_item.name}</span>
+				{/foreach}
+				<input type="hidden" name="cate_id" value="{$deal.cate_id}" />
+          </div>
+          <div class="blank15"></div>
+        </div>
+        <div class="border_form_row" style="width:400px;">
+          <div class="blank15"></div>
+          <div class="form_row">
+            <label class="title w100" style="letter-spacing:3px; color:#676767; margin-left:10px">封面图片:</label>
+            <div class="f_l">
+              <label class="fileupload" onclick="upd_file(this,'image_file');">
+                <input type="file" class="filebox" name="image_file" id="image_file"/>
+              </label>
+              <label class="fileuploading hide" ></label>
+            </div>
+            <div class="blank15"></div>
+          </div>
+          
+          <div class="form_row">
+            <div class="blank"></div>
+            <label class="title w100 cc-tip-control" ref="tip5" style="letter-spacing:3px; color:#676767; margin-left:10px" ref="tip5">视  频:</label>
+            <input type="text" value="{$deal.vedio}" class="textbox input-tip-control" ref="tip5" style="width:245px;"  name="vedio" />
+            <div class="blank1"></div>
+            <div class="form_tip" style="display:none;" id="tip5">
+              <p>我们非常建议你提交一段几分钟的宣传视频。支持土豆，优酷，酷六等视频。</p>
+              <p>视频是最好的传递感情的方式，能让受众感受到项目的情感和性格。这是您努力的证明，并且预示着项目会被认真的执行。我们知道录像会让人觉得有点可怕，不是每个人都喜欢站在摄像机前。制作视频可能会是您面临的一个挑战。但是，出现在镜头前说明您对于您所要做的事情很在乎，也能让大家更了解您，更愿意相信您。</p>
+              <p>每个人制作视频的水平可能会有所不同。有些人能做出好看的动画效果，有些人只是简单的站在镜头前说几句话。其实，这些视频都会收到很好的效果。您还可以叫您的朋友一起来帮忙构思拍摄，这会让完成视频的难度大大降低。</p>
+              <p>无论您的视频以何种形式展现，我们都希望您能在视频中说明如下的信息：</p>
+              <p>1、介绍一下自己</p>
+              <p>2、介绍一下项目背后的故事。为什么您要这样做？现在进行到那一步了？您对它有什么感受？</p>
+              <p>3、站出来寻求他人的支持，解释您为什么需要支持以及您拿到钱准备怎么做.</p>
+              <p>4、发挥你的想象力告诉大家您的回报有多么有趣</p>
+              <p>5、告诉大家如果您没有达到目标，项目会失败，您/团队和支持者们都会感到失望</p>
+              <p>6、感谢每一个人。</p>
+            </div>
+            <div class="blank15"></div>
+          </div>
+          <div class="form_row">
+            	<label class="title w100" style="letter-spacing:3px; color:#676767; margin-left:10px">常见问题:</label>
+            	<div class="clear"></div><br/>
+            	<label><a href="javascript:void(0);" id="add_faq" class="linkgreen" style='margin-left:15px'>添加</a></label>
+            	<div class="clear"></div>
+				<div style="float:left; width:500px;" id="faq_list">
+					{include file="inc/deal_faq_item.html"}					
+				</div>
+				<div class="blank15"></div>
+          </div>
+        </div>
+        <div class="blank15"></div>
+        <div class="submit_btn_row">
+          <input type="hidden" name="image" value="{$deal_image.url}" />
+          <input type="hidden" name="savenext" value="0" />
+          <div class="ui-button gray" rel="gray" id="savenow">
+            <div> <span>先保存一下</span> </div>
+          </div>
+          <div class="ui-button green" rel="green" id="savenext" style="margin-left:5px;">
+            <div> <span>下一步</span> </div>
+          </div>
+          <input type="hidden" value="1" name="ajax" />
+          <input type="hidden" name="id" value="{$deal.id}" />
+          <div class="blank15"></div>
+        </div>
+      </form>
+    </div>
+    <div class="deal-publish-right">
+      <div class="page_title deal-input-box"> <span id="deal_title">{if $deal.name eq ''}DreamerHouse梦中家一起来打造我们的世外桃源吧{else}{$deal.name}{/if}</span> </div>
+      <div class="blank"></div>
+      <div class="switch2_nav" style="position:relative;"> <a class="ui-button green" style="float:right;" rel="green" href="#">
+        <div> <span>支持项目</span> </div>
+        </a>
+        <div class="ui-button blue focus_deal" rel="blue" >
+          <div> <span>立即关注</span> </div>
+        </div>
+        <a class="ui-button green" style="float:right;" rel="green">
+        <div> <span>转发</span> </div>
+        </a>
+        <ul>
+          <li class="current"><a href="#">项目主页</a></li>
+          <li><a href="#">回报</a></li>
+        </ul>
+      </div>
+      <div class="deal-show">
+        <div class="deal-title"></div>
+        <div class="blank"></div>
+        <div class="deal-info clear">
+          <div class="deal-info-left">
+            <div class="deal-remark box">
+              <div class="deal-info-title">项目简介</div>
+              <div class="blank"></div>
+              <div class="deal-tags clear"> <span> <a href="#" >项目标签（发布完后自动提取）</a></span> </div>
+              <div class="blank"></div>
+              <div class="content"> <span id="deal_brief">{if $deal.brief eq ''}项目的简介与定位{else}{$deal.brief}{/if}</span> </div>
+            </div>
+            <div class="blank"></div>
+            <div class="deal-news box">
+              <div class="deal-info-title"> <span class="f_l">动态更新</span> <span class="f_r deal-news-date"> 发起日期： {function name="to_date" v=$deal_info.begin_time f="Y年m月d日H:i"}<br/>
+                结束日期： {function name="to_date" v=$deal_info.end_time f="Y年m月d日H:i"} </span> </div>
+              <div class="blank" style="height:115px;"></div>
+              <a class="ui-button green" rel="green">
+              <div> <span>查看更多内容</span> </div>
+              </a>
+              <div class="blank1"></div>
+            </div>
+          </div>
+          <div class="deal-info-right">
+            <div class="deal-anthor box">
+              <div class="deal_user_box clear">
+                <div class="deal-info-title">团队介绍</div>
+                <div class="blank"></div>
+                <div class="deal_user_avatar"> <a href="{url r="home" p="id=$user_info.id"}"><img class="user_pic" src="{function name="get_user_avatar" uid=$user_info.id type="middle"}"/></a> </div>
+                <div class="deal_user_info clear">
+                  <div class="deal_user_name">{$deal.user_name}</div>
+                  <div class="deal__zijin_t">本项目所需资金 </div>
+                  <div class="deal__zijin"> <span class=" f_l  deal-input-box">¥<font id="price">{$deal.limit_price}</font>元</span> <a class="ui-button green f_r" style="float:right; margin-top:5px;" id="add_update" rel="green">
+                    <div> <span>发送私信</span> </div>
+                    </a> </div>
+                </div>
+              </div>
+            </div>
+            <div class="blank"></div>
+            <div class="deal-video"> <img alt="" src="{$TMPL}/images/07.jpg" width="360" height="200"></div>
+          </div>
+        </div>
+        <div class="blank"></div>
+        <div class="deal-other">
+          <div class="deal-other-tabs clear">
+            <ul class="deal-desc-tabs clear">
+              <li class="curr"> <a href="javascript:;" title="项目详情" ref="project_detial">项目详情</a> </li>
+              <li> <a href="javascript:;" title="风险声明OR问答" ref="project_question">风险声明OR问答</a> </li>
+              <li> <a href="javascript:;" title="支持者" ref="project_zhichizhe">支持者</a> </li>
+              <li> <a href="javascript:;" title="评论" ref="project_pinglun">评论</a> </li>
+            </ul>
+            <div class="deal-tabs-press">
+              <div class="project-progress-container">
+                <div class="progress-bar fl" title="0%"> </div>
+              </div>
+              <div class=" deal-input-box clear"> <span class="support_amount">已筹得0元</span> <span class="remain_days">剩余<font id="deal_days">0</font>天</span> </div>
+            </div>
+          </div>
+          <div class="deal-bottom">
+            <div id="project_detial" class="deal-show-item clear" style="display:block;">
+              <div class="deal-detial-other" style="width:737px;">
+              	<p class="detial-desc">{$deal.description}</p>
+                <p class="detial-desc">{$deal.xmdo}</p><p class="detial-desc">&nbsp;</p>
+                <p class="detial-desc">{$deal.xmld}</p><p class="detial-desc">&nbsp;</p>
+                <p class="detial-desc">{$deal.jihua}</p><p class="detial-desc">&nbsp;</p>
+                <p class="detial-desc">{$deal.yusuan}</p><p class="detial-desc">&nbsp;</p>
+                <p class="detial-desc">{$deal.youshi}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="blank"></div>
+  </div>
+</div>
+<div class="blank"></div>
+{include file="inc/footer.html"} 

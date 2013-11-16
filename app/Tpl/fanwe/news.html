@@ -1,0 +1,30 @@
+{include file="inc/header.html"} 
+<?php
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/news.css";
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/deal_log.css";
+$this->_var['dpagecss'][] = $this->_var['TMPL_REAL']."/css/home_news.css";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/news.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/news.js";
+$this->_var['dpagejs'][] = $this->_var['TMPL_REAL']."/js/discover.js";
+$this->_var['dcpagejs'][] = $this->_var['TMPL_REAL']."/js/discover.js";
+?>
+<link rel="stylesheet" type="text/css" href="{function name="parse_css" v="$dpagecss"}" />
+<script type="text/javascript" src="{function name="parse_script" v="$dpagejs" c="$dcpagejs"}"></script>
+<div class="blank"></div>
+<div class="shadow_bg">
+	<div class="wrap white_box">		
+		{include file="inc/news_update_header.html"}	
+
+		<div class="blank"></div>
+		<div class="blank"></div>	
+		<div id="pin_box" style="padding:20px;">		
+		{include file="inc/news_item.html"}
+		</div>
+		<div class="ajax_loading_log" id="pin_loading" rel="{$ajaxurl}">加载更多动态</div>
+		<div class="pages">{$pages}</div>
+		<div class="blank"></div>
+	</div>
+	
+</div>
+<div class="blank"></div>
+{include file="inc/footer.html"} 
