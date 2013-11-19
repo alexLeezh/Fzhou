@@ -96,7 +96,7 @@ echo $k['name']($k['v']);
 		<li>执行计划</li>
       </ul>
     </div>
-    <div class="f_r"> <a href="<?php
+    <div class="f_r" style="margin-top:16px;"> <a href="<?php
 echo parse_url_tag("u:project#add|"."".""); 
 ?>" class="add_project_header f_r"></a> 
       <!--<div class="login_tip f_r">

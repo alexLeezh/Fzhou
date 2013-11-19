@@ -124,6 +124,7 @@
 	text-align: center;
 	color: #fff;
 	font-size: 16px;
+	margin-top: 16px;
 	background: url(../images/deal-publish-tab-bg.png) no-repeat;
 }
 .pulish_project_header ul li a{
@@ -618,12 +619,12 @@ div.deal-supports-item:active{
 }
 .pulish_header{
 	background: #fff;
-	height: 45px;
+	height: 70px;
 	overflow: hidden;
 	border-bottom: 1px solid #f2f2f0;
 }
 .pulish_header .logo{
-	margin-top:5px;
+	margin-top:20px;
 }
 .pulish_header .logo img{
 	width:120px;
