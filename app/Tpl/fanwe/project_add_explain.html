@@ -45,7 +45,7 @@ var send_span = {function name="app_conf" v="SEND_SPAN"}000;
 <script type="text/javascript" src="{function name="parse_script" v="$notifypagejs" c="$cnotifypagejs"}"></script>
 {/if}
 <style>
-.deal-input-box{ border:5px dashed red;}
+.deal-input-box{ border:0px dashed red;}
 </style>
 </head>
 <body>
@@ -64,7 +64,7 @@ var send_span = {function name="app_conf" v="SEND_SPAN"}000;
 		<li><a href="{url r="project#zhixing" p="id=$deal.id"}">执行计划</a></li>
       </ul>
     </div>
-    <div class="f_r"> <a href="{url r="project#add"}" class="add_project_header f_r"></a> 
+    <div class="f_r" style="margin-top:16px;"> <a href="{url r="project#add"}" class="add_project_header f_r"></a> 
       <!--<div class="login_tip f_r">
 				{insert name="login_tip"}
 			</div>--> 
@@ -195,38 +195,80 @@ $(document).ready(function(){
 			<div class="deal-publish-left">
 				<form id="next_two_project_form" action="{url r="project#saveExplain"}" method="post">									
 					<div class="form_row my_form_row">
-						<label class="title w100 my_title" style="height:40px;line-height:50px;width:150px;float:none;">详细介绍一下您的项目</label>
-<!--                        <div><p class="prompttext" style="margin-left:20px;">详细介绍一下您的项目以及您为什么要这样做</p></div>-->
+						<label class="title w100 my_title" style="height:40px;line-height:50px;width:150px;float:none;">项目详情</label>
+                        <a id="btn_xiangqing" class="tip_control" href="#" style="background-image: url('/app/Tpl/fanwe/images/showsome.jpg');"></a>
+                        <div><p id="about_xiangqing" class="prompttext" style="margin-left:20px;display:none;">详细介绍一下您的项目以及您为什么要这样做</p></div>
                         <div class="blank"></div>
 						<div class="clearfix"></div>
 						<div class="form_row">
-							<div class="ke_form" style="text-align:-webkit-center !important; text-align:center; *margin-top:-20px;">
+							<textarea id="ta_xiangqing" class="textarea3 liangdian" style="height: 40px; overflow-y: hidden;display:block;">{$deal.description}</textarea>
+							<div id="xiangqing" class="ke_form" style="float:left;text-align:-webkit-center !important; text-align:center;margin-left:20px;*margin-left:10px; *margin-top:-20px;display:none;">
 							{function name="show_ke_form" text_name="descrip" width="360" height="300" ctn="$deal.description"}
 							</div>
 						</div>
                         <div class="blank15"></div>
 					</div>
 	
-					<div class="form_row my_form_row">
+<!--					<div class="form_row my_form_row">
 						<label class="title w100 my_title cc-tip-control" ref="tip2" style="height:50px;line-height:50px; float:none;">你为什么要这样做</label>
                         <div><p class="prompttext" id="tip2" style="margin-left:20px; margin-top:-10px;display:none;">用一句话描述你想做的事情。这句话将作为您的项目简介出现在展示单元中，同时还会出现在项目内页最显眼的位置。作为一个直观展示的基本信息，请务必在简练明确的基础上发挥您最高的文字功底吸引支持者。试想如果您把您的项目写成一条微博，怎么才能让您的粉丝快速的了解这个项目到底想做什么？</p></div>
                         <div class="blank"></div>
                         <div class="clearfix"></div>
                         <div class="form_row" >
-							<div class="ke_form" style="text-align:-webkit-center !important; text-align:center; *margin-top:-20px;">
+							<div class="ke_form" style="text-align:-webkit-center !important; text-align:center; margin-left:20px;*margin-left:10px; *margin-top:-20px;">
 							{function name="show_ke_form" text_name="xmdo" width="360" height="300" ctn="$deal.xmdo"}
 							</div>
 						</div>
                         <div class="blank15"></div>
-					</div>
+					</div>-->
 	
 					<div class="form_row my_form_row">
-						<label class="title w100 my_title" style="height:50px;line-height:50px; float:none;">若干亮点</label>
+						<label class="title w100 my_title" style="height:50px;line-height:50px; float:none;">亮点</label>
+                        <a id="btn_liangdian" class="tip_control" href="#" style="background-image: url('/app/Tpl/fanwe/images/showsome.jpg');"></a>
+                        <div><p id="about_liangdian" class="prompttext" style="margin-left:20px;display:none;">您认为这个项目哪里最吸引人，让大家知道您的想法。</p></div>
                         <div class="blank"></div>
                         <div class="clearfix"></div>
                         <div class="form_row">
-							<div class="ke_form" style="text-align:-webkit-center !important; text-align:center; *margin-top:-20px;">
+                            <textarea id="ta_liangdian" class="textarea3 liangdian" style="height: 40px; overflow-y: hidden;">{$deal.xmld}</textarea>
+							<div id="liangdian" class="ke_form" style="float:left;text-align:-webkit-center !important; text-align:center; margin-left:20px;*margin-left:10px; *margin-top:-20px;display:none;">
 							{function name="show_ke_form" text_name="xmld" width="360" height="300" ctn="$deal.xmld"}
+							<script>
+                              //function a1(){$("#liangdian").hide();$("#ta_liangdian").show();}
+                              var var_btnclick = false;
+                              //加入的编辑器完成后的调用方法
+                              bindevenkeafter(function(edi){
+                                  if($('#'+edi).attr("id")=="descrip"){
+                                    var dd=$("#xiangqing .ke-iframe").contents().find("body");
+                                    dd.css({"width":"341px","height":"237px"});
+                                      //dd.attr("onfocus","this.focus()");
+                                      dd.bind("keyup",function(){
+                                        
+                                        parent.$('#desc_xiangqing').html($(this).html());
+                                        parent.$("#ta_xiangqing").html($(this).html());
+                                        }); 
+                                      dd.attr("onblur",
+                                      "parent.$('#xiangqing').hide();"+
+                                      "parent..$('#ta_xiangqing').show();"+
+                                      "parent.$('.deal-input-box').css('border-width','0px');"+
+                                      "parent.$('#about_xiangqing').hide();"+
+                                      "parent.$('#btn_xiangqing').css('background-image','url(/app/Tpl/fanwe/images/showsome.jpg)');parent.var_btnclick=true;");
+                                      
+                                  }
+                                  if($('#'+edi).attr("id")=="xmld"){
+                                    var dd=$("#liangdian .ke-iframe").contents().find("body");
+                                    dd.css({"width":"341px","height":"237px"});
+                                    //dd.attr("onfocus","parent.a1()");
+                                      dd.bind("keyup",function(){
+                                        
+                                        parent.$('#desc_liangdian').html($(this).html());
+                                        parent.$("#ta_liangdian").html($(this).html());
+                                        }); 
+                                      dd.attr("onblur", "parent.liangdian.style.display='none';parent.ta_liangdian.style.display='block';parent.$('.deal-input-box').css('border-width','0px');parent.$('#about_liangdian').hide(); parent.$('#btn_liangdian').css('background-image','url(/app/Tpl/fanwe/images/showsome.jpg)');parent.var_btnclick=true;");
+                                      
+                                  }
+                                });
+                                 
+							</script>
 							</div>
 						</div>
 						<div class="blank15"></div>
@@ -253,6 +295,7 @@ $(document).ready(function(){
 				</form>
 			</div>
 			<div class="deal-publish-right">
+		      <div class="deal-publish-mask"></div>
 		      <div class="page_title"> <span id="deal_title">{if $deal.name eq ''}DreamerHouse梦中家一起来打造我们的世外桃源吧{else}{$deal.name}{/if}</span> </div>
 		      <div class="blank"></div>
 		      <div class="switch2_nav" style="position:relative;"> <a class="ui-button green" style="float:right;" rel="green" href="#">
@@ -274,7 +317,7 @@ $(document).ready(function(){
 		        <div class="blank"></div>
 		        <div class="deal-info clear">
 		          <div class="deal-info-left">
-		            <div class="deal-remark box">
+		            <div class="deal-remark box" style="z-index:1">
 		              <div class="deal-info-title">项目简介</div>
 		              <div class="blank"></div>
 		              <div class="deal-tags clear"> <span> <a href="#" >项目标签（发布完后自动提取）</a></span> </div>
@@ -331,12 +374,12 @@ $(document).ready(function(){
 		              <div class=""> <span class="support_amount">已筹得0元</span> <span class="remain_days">剩余<font id="deal_days">0</font>天</span> </div>
 		            </div>
 		          </div>
-		          <div class="deal-bottom">
+		          <div class="deal-bottom" style="z-index:200;position: relative;">
 		            <div id="project_detial" class="deal-show-item clear" style="display:block;">
 		              <div class="deal-detial-other deal-input-box" style="width:737px;">
-		              	<p class="detial-desc">{$deal.description}</p>
-		                <p class="detial-desc">{$deal.xmdo}</p><p class="detial-desc">&nbsp;</p>
-		                <p class="detial-desc">{$deal.xmld}</p><p class="detial-desc">&nbsp;</p>
+		              	<p id="desc_xiangqing" class="detial-desc">{$deal.description}</p>
+		                <!--<p class="detial-desc">{$deal.xmdo}</p><p class="detial-desc">&nbsp;</p>-->
+		                <p id="desc_liangdian" class="detial-desc">{$deal.xmld}</p><p class="detial-desc">&nbsp;</p>
 		                <p class="detial-desc">{$deal.jihua}</p><p class="detial-desc">&nbsp;</p>
 		                <p class="detial-desc">{$deal.yusuan}</p><p class="detial-desc">&nbsp;</p>
 		                <p class="detial-desc">{$deal.youshi}</p>
@@ -348,7 +391,7 @@ $(document).ready(function(){
 		    </div>
 			<div class="blank"></div>
 			
-	
+	        
 	</div>
 </div>
 <div class="blank"></div>

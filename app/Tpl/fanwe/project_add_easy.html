@@ -87,7 +87,8 @@ $this->_var['dcpagejs'][] = APP_ROOT_PATH."/system/region.js";
 .white_box{background:none repeat scroll 0 0 #F9F9F9;border:none;}
 .ke_form{border:none;}
 .ke-container{background-color:#fff;border:1px solid #1AA9D1;border-radius:3px;padding-top:5px;}
-.deal-input-box{ border:5px dashed red;}
+.deal-input-box{ border:0px dashed red;}
+
 .input-tip-p{ display:none;margin-left:20px; color:#a1a0a0;}
 
 
@@ -194,6 +195,7 @@ $(document).ready(function(){
 				<form id="next_two_project_form" action="{url r="project#saveEasy"}" method="post">									
 					<div class="form_row my_form_row">
 						<label class="title w100 my_title cc-tip-control" ref="tip1" style="height:40px;line-height:50px;width:150px;float:none;">项目的简介与定位</label>
+                        <a id="btn_jianjie" href="#" class="tip_control"></a>
                         <div><p class="input-tip-p" id="tip1">请用一句话描述你想做的事情。这句话将作为您的项目简介出现在展示单元中，同时还会出现在项目内页最显眼的位置。作为一个直观展示的基本信息，请务必在简练明确的基础上发挥您最高的文字功底吸引支持者。试想如果您把您的项目写成一条微博，怎么才能让您的粉丝快速的了解这个项目到底想做什么？<div class="blank15"></div></p></div>
                         
 						<div class="clearfix"></div>
@@ -225,6 +227,7 @@ $(document).ready(function(){
 				</form>
 			</div>
 			<div class="deal-publish-right">
+		      <div class="deal-publish-mask"></div>
 		      <div class="page_title"> <span id="deal_title">{if $deal.name eq ''}DreamerHouse梦中家一起来打造我们的世外桃源吧{else}{$deal.name}{/if}</span> </div>
 		      <div class="blank"></div>
 		      <div class="switch2_nav" style="position:relative;"> <a class="ui-button green" style="float:right;" rel="green" href="#">

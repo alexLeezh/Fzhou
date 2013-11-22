@@ -23,6 +23,15 @@
 	margin-top: 10px;
 	background: none repeat scroll 0 0 #ffffff;
 	margin-bottom: 15px;
+    position: relative;
+}
+.my_form_row .tip_control{
+    position: absolute;
+    top:20px;
+    right: 20px;
+    background:url(../images/showsome.jpg) no-repeat;
+    width:19px;
+    height:12px;
 }
 .my_form_row .ex_my_title {
 	text-align: left;
@@ -204,6 +213,9 @@
 	float: left;
 }
 .deal-info .deal-info-left .deal-remark {
+    z-index: 200;
+    position: relative;
+    cursor:pointer;
 }
 .deal-info .deal-info-left .deal-remark .deal-tags {
 }
@@ -596,6 +608,17 @@ div.deal-supports-item:active{
 	padding-bottom: 10px;
 	border: 5px dashed #dcdcdc;
 	margin-top: 10px;
+    position: relative;
+}
+.deal-publish-mask{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background:#fff;
+    opacity:0.6;
+    z-index: 100;
 }
 .headpage{
 	width: 740px;

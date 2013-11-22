@@ -670,15 +670,14 @@ _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/del_im
 	padding: 7px;
 	color: #8c8c8c;
 	border: #f2f2f0 solid 1px;
-	width: 345px;
 	font-size: 14px;
 	float: left;
-	height: 200px;
-	min-height: 100px;
-	max-height: 100px;
-	min-width: 345px;
-	max-width: 345px;
+    resize:none;
+    width: 345px;
+    height: 40px;
 	margin-left:20px;
+    font:12px/18px Microsoft Yahei;
+    overflow-y:hidden;
 }
 
 .form_row .getpassword {
