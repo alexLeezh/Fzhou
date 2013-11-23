@@ -329,7 +329,7 @@ echo $k['name']($k['text_name'],$k['width'],$k['height'],$k['ctn']);
                                         }); 
                                       dd.attr("onblur",
                                       "parent.$('#xiangqing').hide();"+
-                                      "parent..$('#ta_xiangqing').show();"+
+                                      "parent.$('#ta_xiangqing').show();"+
                                       "parent.$('.deal-input-box').css('border-width','0px');"+
                                       "parent.$('#about_xiangqing').hide();"+
                                       "parent.$('#btn_xiangqing').css('background-image','url(/app/Tpl/fanwe/images/showsome.jpg)');parent.var_btnclick=true;");

@@ -474,7 +474,7 @@ function show_ke_form($text_name,$width="300",$height="80",$cnt="")
 
 function show_ke_topic($id,$width=630,$height=350,$cnt="")
 {	
-	return "<script type='text/javascript'>function keaftercreate(eid){}function bindevenkeafter(func){keaftercreate = func;} var eid = '".$id."';KE.show({urlType:'domain', id:eid, items : [ 'bold','italic', 'underline', 'insertorderedlist', 'insertunorderedlist','fimage','media'], skinType: 'tinymce',allowFileManager : false,afterCreate :function() {keaftercreate('".$id."')},resizeMode : 0, newlineTag:'nl'});</script><div  style='margin-bottom:5px; '><textarea id='".$id."' name='".$id."' style='width:".$width."px; height:".$height."px;' class='ke_html_editor'>".$cnt."</textarea> </div>";
+	return "<script type='text/javascript'>function keaftercreate(eid){}function bindevenkeafter(func){keaftercreate = func;} KE.lang['cutpic']='截图'; KE.plugin['cutpic']={click : function(id){KE.util.selection(id);var dialog = new KE.dialog({id:id,cmd:'cutpic',file:'../cutpic.html',width:310,height:90,title:'截图'});dialog.show();}}; var eid = '".$id."';KE.show({urlType:'domain', id:eid, items : [ 'bold','italic', 'underline', 'insertorderedlist', 'insertunorderedlist','fimage','media','cutpic'], skinType: 'tinymce',allowFileManager : false,afterCreate :function() {keaftercreate('".$id."')},resizeMode : 0, newlineTag:'nl'});</script><div  style='margin-bottom:5px; '><textarea id='".$id."' name='".$id."' style='width:".$width."px; height:".$height."px;' class='ke_html_editor'>".$cnt."</textarea> </div>";
 }
 //过滤非法的html标签
 function vaild_html($content)
